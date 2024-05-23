@@ -1,0 +1,384 @@
+[
+  {
+    "cliente": "Antonietta",
+    "apellido": "Waters",
+    "fechaHora": "2024-04-30T00:45:26.936990100",
+    "frutasVendidas": [
+      {
+        "nombre": "Naranja1",
+        "procedencia": "Zamora",
+        "numeroKilos": 6506,
+        "precioCostePorKilo": 40.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2027-07-03",
+        "cuantasVecesSeVendio": 27
+      }
+    ],
+    "precioCompra": 20.0,
+    "almacenVenta": [
+      10.0,
+      20.0
+    ]
+  },
+  {
+    "cliente": "Gregg",
+    "apellido": "Doyle",
+    "fechaHora": "2024-04-30T00:45:26.937988100",
+    "frutasVendidas": [
+      {
+        "nombre": "Mandarina2",
+        "procedencia": "Barcelona",
+        "numeroKilos": 1958,
+        "precioCostePorKilo": 40.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2027-01-14",
+        "cuantasVecesSeVendio": 175
+      }
+    ],
+    "precioCompra": 20.0,
+    "almacenVenta": [
+      10.0,
+      20.0
+    ]
+  },
+  {
+    "cliente": "Adrian",
+    "apellido": "Saavedra",
+    "fechaHora": "2024-04-30T10:09:43.227036",
+    "frutasVendidas": [
+      {
+        "nombre": "Banana5",
+        "procedencia": "Caceres",
+        "numeroKilos": 4000,
+        "precioCostePorKilo": 39.26609495034995,
+        "precioVentaPorKilo": 77.7019971802236,
+        "fechaCaducidad": "2028-11-29",
+        "cuantasVecesSeVendio": 27
+      },
+      {
+        "nombre": "Banana48",
+        "procedencia": "Badajoz",
+        "numeroKilos": 7940,
+        "precioCostePorKilo": 37.780709718325,
+        "precioVentaPorKilo": 62.99997721643813,
+        "fechaCaducidad": "2029-07-16",
+        "cuantasVecesSeVendio": 90
+      }
+    ],
+    "precioCompra": 281.4039487933235,
+    "almacenVenta": [
+      155.4039943604472,
+      125.99995443287627
+    ]
+  },
+  {
+    "cliente": "Darrell",
+    "apellido": "Towne",
+    "fechaHora": "2024-04-30T12:31:18.265760800",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana33",
+        "procedencia": "Almeria",
+        "numeroKilos": 928,
+        "precioCostePorKilo": 32.02224098663895,
+        "precioVentaPorKilo": 57.1449149270332,
+        "fechaCaducidad": "2032-11-15",
+        "cuantasVecesSeVendio": 81
+      },
+      {
+        "nombre": "Platano Canario",
+        "procedencia": "Canarias",
+        "numeroKilos": 194,
+        "precioCostePorKilo": 300.0,
+        "precioVentaPorKilo": 400.0,
+        "fechaCaducidad": "2026-06-06",
+        "cuantasVecesSeVendio": 2
+      },
+      {
+        "nombre": "Pera24",
+        "procedencia": "Cordoba",
+        "numeroKilos": 2734,
+        "precioCostePorKilo": 32.792876831617406,
+        "precioVentaPorKilo": 48.438604578281485,
+        "fechaCaducidad": "2031-08-23",
+        "cuantasVecesSeVendio": 112
+      },
+      {
+        "nombre": "Manzana33",
+        "procedencia": "Almeria",
+        "numeroKilos": 928,
+        "precioCostePorKilo": 32.02224098663895,
+        "precioVentaPorKilo": 57.1449149270332,
+        "fechaCaducidad": "2032-11-15",
+        "cuantasVecesSeVendio": 81
+      },
+      {
+        "nombre": "Banana25",
+        "procedencia": "Salamanca",
+        "numeroKilos": 9564,
+        "precioCostePorKilo": 24.79081028428306,
+        "precioVentaPorKilo": 62.84756030447747,
+        "fechaCaducidad": "2026-11-06",
+        "cuantasVecesSeVendio": 39
+      },
+      {
+        "nombre": "Banana48",
+        "procedencia": "Badajoz",
+        "numeroKilos": 7938,
+        "precioCostePorKilo": 37.780709718325,
+        "precioVentaPorKilo": 62.99997721643813,
+        "fechaCaducidad": "2029-07-16",
+        "cuantasVecesSeVendio": 90
+      },
+      {
+        "nombre": "Banana5",
+        "procedencia": "Caceres",
+        "numeroKilos": 3998,
+        "precioCostePorKilo": 39.26609495034995,
+        "precioVentaPorKilo": 77.7019971802236,
+        "fechaCaducidad": "2028-11-29",
+        "cuantasVecesSeVendio": 27
+      },
+      {
+        "nombre": "Mandarina22",
+        "procedencia": "Madrid",
+        "numeroKilos": 3748,
+        "precioCostePorKilo": 20.0827289698195,
+        "precioVentaPorKilo": 33.87312809854702,
+        "fechaCaducidad": "2031-03-24",
+        "cuantasVecesSeVendio": 21
+      },
+      {
+        "nombre": "Naranja28",
+        "procedencia": "Navarra",
+        "numeroKilos": 9222,
+        "precioCostePorKilo": 11.659405598223838,
+        "precioVentaPorKilo": 34.42174604991174,
+        "fechaCaducidad": "2027-07-07",
+        "cuantasVecesSeVendio": 98
+      },
+      {
+        "nombre": "Manzana46",
+        "procedencia": "Huelva",
+        "numeroKilos": 3292,
+        "precioCostePorKilo": 20.68536272897357,
+        "precioVentaPorKilo": 22.81030714898685,
+        "fechaCaducidad": "2028-11-30",
+        "cuantasVecesSeVendio": 130
+      }
+    ],
+    "precioCompra": 2400.6728212066114,
+    "almacenVenta": [
+      160.00576179569293,
+      1120.0,
+      135.62809281918814,
+      160.00576179569293,
+      175.9731688525369,
+      176.39993620602675,
+      217.56559210462606,
+      94.84475867593166,
+      96.38088893975286,
+      63.86886001716318
+    ]
+  },
+  {
+    "cliente": "Drew",
+    "apellido": "Steuber",
+    "fechaHora": "2024-04-30T12:33:05.115189",
+    "frutasVendidas": [
+      {
+        "nombre": "Pera39",
+        "procedencia": "Valladolid",
+        "numeroKilos": 6452,
+        "precioCostePorKilo": 17.06195031147668,
+        "precioVentaPorKilo": 26.19088980077176,
+        "fechaCaducidad": "2031-12-30",
+        "cuantasVecesSeVendio": 92
+      }
+    ],
+    "precioCompra": 52.38177960154352,
+    "almacenVenta": [
+      52.38177960154352
+    ]
+  },
+  {
+    "cliente": "Adriana",
+    "apellido": "xd",
+    "fechaHora": "2024-04-30T14:10:41.027578400",
+    "frutasVendidas": [
+      {
+        "nombre": "Platano Canario",
+        "procedencia": "Canarias",
+        "numeroKilos": 194,
+        "precioCostePorKilo": 300.0,
+        "precioVentaPorKilo": 400.0,
+        "fechaCaducidad": "2026-06-06",
+        "cuantasVecesSeVendio": 2
+      }
+    ],
+    "precioCompra": 800.0,
+    "almacenVenta": [
+      800.0
+    ]
+  },
+  {
+    "cliente": "Gema",
+    "apellido": "Garcia Fernandez",
+    "fechaHora": "2024-05-02T12:33:50.321280200",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 18,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 1
+      }
+    ],
+    "precioCompra": 56.0,
+    "almacenVenta": [
+      56.0
+    ]
+  },
+  {
+    "cliente": "Reagan",
+    "apellido": "Schinner",
+    "fechaHora": "2024-05-02T17:50:24.576811300",
+    "frutasVendidas": [
+      {
+        "nombre": "Platano Canario",
+        "procedencia": "Canarias",
+        "numeroKilos": 194,
+        "precioCostePorKilo": 300.0,
+        "precioVentaPorKilo": 400.0,
+        "fechaCaducidad": "2026-06-06",
+        "cuantasVecesSeVendio": 2
+      }
+    ],
+    "precioCompra": 800.0,
+    "almacenVenta": [
+      800.0
+    ]
+  },
+  {
+    "cliente": "Jermaine",
+    "apellido": "Heidenreich",
+    "fechaHora": "2024-05-02T19:06:53.068365900",
+    "frutasVendidas": [
+      {
+        "nombre": "Platano Canario",
+        "procedencia": "Canarias",
+        "numeroKilos": 194,
+        "precioCostePorKilo": 300.0,
+        "precioVentaPorKilo": 400.0,
+        "fechaCaducidad": "2026-06-06",
+        "cuantasVecesSeVendio": 2
+      }
+    ],
+    "precioCompra": 800.0,
+    "almacenVenta": [
+      800.0
+    ]
+  },
+  {
+    "cliente": "Samuel",
+    "apellido": "Torphy",
+    "fechaHora": "2024-05-02T19:09:08.212552100",
+    "frutasVendidas": [
+      {
+        "nombre": "Banana5",
+        "procedencia": "Caceres",
+        "numeroKilos": 3994,
+        "precioCostePorKilo": 39.26609495034995,
+        "precioVentaPorKilo": 77.7019971802236,
+        "fechaCaducidad": "2028-11-29",
+        "cuantasVecesSeVendio": 29
+      }
+    ],
+    "precioCompra": 155.4039943604472,
+    "almacenVenta": [
+      155.4039943604472
+    ]
+  },
+  {
+    "cliente": "Maksim",
+    "apellido": "Melnikov",
+    "fechaHora": "2024-05-02T19:10:34.076205600",
+    "frutasVendidas": [
+      {
+        "nombre": "Banana5",
+        "procedencia": "Caceres",
+        "numeroKilos": 3994,
+        "precioCostePorKilo": 39.26609495034995,
+        "precioVentaPorKilo": 77.7019971802236,
+        "fechaCaducidad": "2028-11-29",
+        "cuantasVecesSeVendio": 29
+      }
+    ],
+    "precioCompra": 155.4039943604472,
+    "almacenVenta": [
+      155.4039943604472
+    ]
+  },
+  {
+    "cliente": "Adrian",
+    "apellido": "Saavedra",
+    "fechaHora": "2024-05-02T19:41:30.847692100",
+    "frutasVendidas": [
+      {
+        "nombre": "Platano Canario",
+        "procedencia": "Canarias",
+        "numeroKilos": 192,
+        "precioCostePorKilo": 300.0,
+        "precioVentaPorKilo": 400.0,
+        "fechaCaducidad": "2026-06-06",
+        "cuantasVecesSeVendio": 3
+      }
+    ],
+    "precioCompra": 560.0,
+    "almacenVenta": [
+      560.0
+    ]
+  },
+  {
+    "cliente": "Benton",
+    "apellido": "Witting",
+    "fechaHora": "2024-05-03T11:26:07.186466500",
+    "frutasVendidas": [
+      {
+        "nombre": "Platano Canario",
+        "procedencia": "Canarias",
+        "numeroKilos": 190,
+        "precioCostePorKilo": 300.0,
+        "precioVentaPorKilo": 400.0,
+        "fechaCaducidad": "2026-06-06",
+        "cuantasVecesSeVendio": 4
+      }
+    ],
+    "precioCompra": 800.0,
+    "almacenVenta": [
+      800.0
+    ]
+  },
+  {
+    "cliente": "Harland",
+    "apellido": "Rowe",
+    "fechaHora": "2024-05-03T11:34:29.648229500",
+    "frutasVendidas": [
+      {
+        "nombre": "Platano Canario",
+        "procedencia": "Canarias",
+        "numeroKilos": 188,
+        "precioCostePorKilo": 300.0,
+        "precioVentaPorKilo": 400.0,
+        "fechaCaducidad": "2026-06-06",
+        "cuantasVecesSeVendio": 5
+      }
+    ],
+    "precioCompra": 800.0,
+    "almacenVenta": [
+      800.0
+    ]
+  }
+]

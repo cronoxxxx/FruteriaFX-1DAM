@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import io.github.palexdev.materialfx.controls.MFXToggleButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" prefHeight="556.0" prefWidth="878.0" style="-fx-background-color: #e6e1ec;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uiFX.SegundaPantallaClientesController">
+   <children>
+      <MFXButton fx:id="botonDelete" layoutX="763.0" layoutY="480.0" mnemonicParsing="false" onAction="#deleteFruta" prefHeight="42.0" prefWidth="82.0" text="Eliminar" />
+      <MFXButton fx:id="botonAdd" layoutX="556.0" layoutY="480.0" mnemonicParsing="false" onAction="#addFruta" prefHeight="42.0" prefWidth="81.0" text="Añadir" />
+      <MFXButton fx:id="botonUpdate" layoutX="660.0" layoutY="480.0" mnemonicParsing="false" onAction="#updateFruta" prefHeight="42.0" prefWidth="82.0" text="Actualizar" />
+      <MFXTextField fx:id="nombre" alignment="CENTER" floatMode="BORDER" layoutX="552.0" layoutY="135.0" prefHeight="78.0" prefWidth="298.0" promptText="Nombre" />
+      <MFXTextField fx:id="procedencia" alignment="CENTER" floatMode="BORDER" layoutX="556.0" layoutY="232.0" prefHeight="50.0" prefWidth="126.0" promptText="Procedencia" />
+      <TableView fx:id="tablaFrutas" layoutX="7.0" layoutY="104.0" prefHeight="442.0" prefWidth="526.0">
+        <columns>
+          <TableColumn fx:id="columna1" prefWidth="64.80001449584961" text="Nombre" />
+          <TableColumn fx:id="columna2" prefWidth="88.79998779296875" text="Procedencia" />
+          <TableColumn fx:id="columna3" prefWidth="57.5999755859375" text="Nº Kilos" />
+          <TableColumn fx:id="columna4" prefWidth="83.20002746582031" text="Precio-Venta" />
+            <TableColumn fx:id="columna5" prefWidth="88.0" text="Precio-Coste" />
+            <TableColumn fx:id="columna6" prefWidth="66.4000244140625" text="Caducidad" />
+            <TableColumn fx:id="columna7" text="Nº Ventas" />
+        </columns>
+      </TableView>
+      <MFXToggleButton fx:id="toggleidioma" layoutX="22.0" layoutY="4.0" length="40.0" onAction="#cambioIdioma" prefHeight="49.0" prefWidth="7.0" text="Español" />
+      <ImageView fitHeight="26.0" fitWidth="28.0" layoutX="838.0" layoutY="16.0" onMouseClicked="#ayuda" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/ayuda.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="label" alignment="CENTER" layoutX="185.0" layoutY="29.0" prefHeight="50.0" prefWidth="323.0" text="Fruteria de Adrian">
+         <font>
+            <Font name="Calibri Bold" size="28.0" />
+         </font>
+      </Label>
+      <MFXToggleButton fx:id="modooscuro" layoutX="22.0" layoutY="54.0" length="40.0" onAction="#modoOscuro" prefHeight="49.0" prefWidth="7.0" text="Modo Oscuro" />
+      <MFXTextField fx:id="precioVenta" alignment="CENTER" floatMode="BORDER" layoutX="720.0" layoutY="232.0" prefHeight="50.0" prefWidth="126.0" promptText="Precio de Venta" />
+      <MFXTextField fx:id="numeroVentas" alignment="CENTER" floatMode="BORDER" layoutX="556.0" layoutY="391.0" prefHeight="50.0" prefWidth="126.0" promptText="Número de Ventas" />
+      <MFXTextField fx:id="numeroKilos" alignment="CENTER" floatMode="BORDER" layoutX="556.0" layoutY="312.0" prefHeight="50.0" prefWidth="126.0" promptText="Número de Kilos" />
+      <MFXTextField fx:id="precioCoste" alignment="CENTER" floatMode="BORDER" layoutX="720.0" layoutY="312.0" prefHeight="50.0" prefWidth="126.0" promptText="Precio de Coste" />
+      <MFXDatePicker fx:id="caducidad" layoutX="716.0" layoutY="391.0" prefHeight="50.0" prefWidth="134.0" />
+      <ImageView fitHeight="101.0" fitWidth="126.0" layoutX="638.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/pera.jpg" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
