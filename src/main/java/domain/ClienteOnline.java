@@ -52,6 +52,6 @@ public class ClienteOnline extends Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return String.format("Nombre: %s\nApellido %s\nDireccion del pedido: %s\nTicket descuento: %b\nFecha de la entrega: %s\nCiudad %s\n",nombre,apellidos,direccionEntregaPedido,hasDescuento,fechaEntregaPedido,ciudad);
+        return String.format("Nombre: %s\nApellido %s\nDireccion del pedido: %s\nTicket descuento: %b\nFecha de la entrega: %s\nCiudad %s\n",nombre,apellidos,direccionEntregaPedido,hasDescuento,fechaEntregaPedido.toString(),ciudad);
     }
 }

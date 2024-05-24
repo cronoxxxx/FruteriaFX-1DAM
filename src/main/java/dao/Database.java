@@ -13,8 +13,9 @@ import java.util.Map;
 @Getter@Setter
 public class Database implements Serializable
 {
-    private static int iterador = 0;
+    private int iterador = 0;
     private  double beneficios = 0;
+    private int fila = 0;
     private final Map<Integer, Cliente> clientesEsperaCompra;
     public Database() {
         clientesEsperaCompra = new HashMap<>();

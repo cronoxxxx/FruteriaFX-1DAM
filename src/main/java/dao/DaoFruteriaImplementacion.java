@@ -81,17 +81,17 @@ public class DaoFruteriaImplementacion implements DaoFruteria {
     }
 //JUnit5
     @Override
-    public boolean frutasDeMismaProcedencia(String nombre1, String nombre2) {
+    public List<Fruta> frutasDeMismaProcedencia(String nombre1, String nombre2) {
         return fruteria.frutasDeMismaProcedencia(nombre1,nombre2);
     }
 
 
-    public boolean reunirFrutasporProcedencia(String procedencia) {
+    public List<Fruta> reunirFrutasporProcedencia(String procedencia) {
         return fruteria.reunirFrutasporProcedencia(procedencia);
     }
     //JUnit5
     @Override
-    public boolean buscarFrutaPorNombre(String nombreFruta) {
+    public List<Fruta> buscarFrutaPorNombre(String nombreFruta) {
         return fruteria.buscarFrutaPorNombre(nombreFruta);
     }
 

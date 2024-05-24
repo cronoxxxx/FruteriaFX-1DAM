@@ -43,8 +43,8 @@ public class GestionMostrador implements IGestionMostrador {
     }
 
     @Override
-    public boolean venderClienteFisico(Cliente clienteComprador, StringBuilder sb, int... cantidadKilos) {
-        return daoMostradorImplementacion.venderClienteFisico(clienteComprador, sb, cantidadKilos);
+    public List<Double> venderCliente(Cliente clienteComprador, StringBuilder sb, int... cantidadKilos) {
+        return daoMostradorImplementacion.venderCliente(clienteComprador, sb, cantidadKilos);
     }
 
     @Override
@@ -52,10 +52,7 @@ public class GestionMostrador implements IGestionMostrador {
         return daoMostradorImplementacion.getBeneficios();
     }
 
-    @Override
-    public boolean venderClienteOnline(Cliente clienteCompradorOnline, StringBuilder sb, int... cantidadKilos) {
-        return daoMostradorImplementacion.venderClienteOnline(clienteCompradorOnline, sb, cantidadKilos);
-    }
+
 
     @Override
     public boolean buscarClienteporID(int id) {

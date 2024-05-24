@@ -73,6 +73,7 @@ public class InterfazFruteria {
         switch (op) {
             case 1 -> System.out.println(gestionFruteria.mostrarInformacion(true));
             case 2 -> System.out.println(gestionFruteria.mostrarInformacion(false));
+            case 3 -> System.out.println(gestionFruteria.getFrutas());
             default -> System.out.println(Constantes.INGRESE_UNA_OPCION_VALIDA);
         }
 
@@ -105,10 +106,10 @@ public class InterfazFruteria {
             LocalDate fechaCaducidad = LocalDate.parse(fechaCaducidadStr, DateTimeFormatter.ofPattern("dd-MM-yyyy"));
             Fruta fruta = new Fruta(nombre, procedencia, numeroKilos, precioCoste, precioVenta, fechaCaducidad);
             if (gestionFruteria.darAltaFruta(fruta)) {
-                System.out.println(Constantes.INGRESO_EXITOSO);
+                System.out.println(Constantes.FRUTA_AGREGADA_CON_EXITO);
 
             } else {
-                System.out.println(Constantes.INGRESO_FALLIDO);
+                System.out.println(Constantes.YA_EXISTE_UNA_FRUTA_CON_EL_MISMO_NOMBRE_EN_LA_FRUTERIA);
             }
         } catch (IOException e) {
             System.out.println(Constantes.ERROR_ENTRADA_SALIDA);
@@ -173,22 +174,36 @@ public class InterfazFruteria {
                     int indice = Integer.parseInt(entradaReader.readLine());
                     System.out.println(Constantes.INGRESE_LA_CANTIDAD_A_REBAJAR);
                     double cantidad = Double.parseDouble(entradaReader.readLine());
-                    if (gestionFruteria.rebajar(cantidad, indice)) {
-                        System.out.println(Constantes.REBAJA_EXITOSA);
+                    if (indice < 0 || indice >= gestionFruteria.getFrutas().size()) {
+                        System.out.println(Constantes.INDICE_FUERA_DE_RANGO);
                     } else {
-                        System.out.println(Constantes.REBAJA_FALLIDA);
+                        if (gestionFruteria.rebajar(cantidad, indice-1)) {
+                            Fruta aux = gestionFruteria.getFrutas().get(indice-1);
+                            System.out.println(aux);
+                            System.out.println(Constantes.REBAJA_EXITOSA);
+                        } else {
+                            System.out.println(Constantes.REBAJA_FALLIDA);
+                        }
                     }
+
                 }
                 case 2 -> {
                     System.out.println(Constantes.INGRESE_EL_NOMBRE_DE_LA_FRUTA);
                     String nombre = entradaReader.readLine();
                     System.out.println(Constantes.INGRESE_LA_CANTIDAD_A_REBAJAR);
                     double cantidad = Double.parseDouble(entradaReader.readLine());
-                    if (gestionFruteria.rebajarNombreFruta(cantidad, nombre)) {
-                        System.out.println(Constantes.REBAJA_EXITOSA);
+                    Fruta aux = gestionFruteria.getDaoFruteriaImplementacion().getFruteria().devolverFrutaNombre(nombre);
+                    if (aux == null) {
+                        System.out.println(Constantes.ERROR_FRUTA_NULA);
                     } else {
-                        System.out.println(Constantes.REBAJA_FALLIDA);
+                        if (gestionFruteria.rebajarNombreFruta(cantidad, aux.getNombre())) {
+                            System.out.println(aux);
+                            System.out.println(Constantes.REBAJA_EXITOSA);
+                        } else {
+                            System.out.println(Constantes.LA_CANTIDAD_DE_REBAJA_ES_DEMASIADO_GRANDE_Y_HARIA_QUE_EL_PRECIO_DE_VENTA_SEA_MENOR_QUE_EL_PRECIO_DE_COSTE);
+                        }
                     }
+
                 }
                 default -> System.out.println(Constantes.DEBE_INGRESAR_UNA_OPCION_VALIDA);
             }
@@ -209,22 +224,36 @@ public class InterfazFruteria {
                     int indice = Integer.parseInt(entradaReader.readLine());
                     System.out.println(Constantes.INGRESE_LA_CANTIDAD_A_SUBIR);
                     double cantidad = Double.parseDouble(entradaReader.readLine());
-                    if (gestionFruteria.subir(cantidad, indice)) {
-                        System.out.println(Constantes.SUBIDA_EXITOSA);
+                    if (indice < 0 || indice >= gestionFruteria.getFrutas().size()) {
+                        System.out.println(Constantes.INDICE_FUERA_DE_RANGO);
                     } else {
-                        System.out.println(Constantes.SUBIDA_FALLIDA);
+                        if (gestionFruteria.subir(cantidad, indice-1)) {
+                            Fruta aux = gestionFruteria.getFrutas().get(indice-1);
+                            System.out.println(aux);
+                            System.out.println(Constantes.SUBIDA_EXITOSA);
+                        } else {
+                            System.out.println(Constantes.SUBIDA_FALLIDA);
+                        }
                     }
+
                 }
                 case 2 -> {
                     System.out.println(Constantes.INGRESE_EL_NOMBRE_DE_LA_FRUTA);
                     String nombre = entradaReader.readLine();
                     System.out.println(Constantes.INGRESE_LA_CANTIDAD_A_SUBIR);
                     double cantidad = Double.parseDouble(entradaReader.readLine());
-                    if (gestionFruteria.subirNombreFruta(cantidad, nombre)) {
-                        System.out.println(Constantes.SUBIDA_EXITOSA);
+                    Fruta aux = gestionFruteria.getDaoFruteriaImplementacion().getFruteria().devolverFrutaNombre(nombre);
+                    if (aux == null) {
+                        System.out.println(Constantes.ERROR_FRUTA_NULA);
                     } else {
-                        System.out.println(Constantes.SUBIDA_FALLIDA);
+                        if (gestionFruteria.subirNombreFruta(cantidad, aux.getNombre())) {
+                            System.out.println(Constantes.SUBIDA_EXITOSA);
+                            System.out.println(aux);
+                        } else {
+                            System.out.println(Constantes.LA_CANTIDAD_DE_PRECIO_ES_DEMASIADO_GRANDE_Y_HARIA_QUE_EL_PRECIO_DE_VENTA_SEA_INNACESIBLE_PARA_NUESTROS_CLIENTES);
+                        }
                     }
+
                 }
                 default -> System.out.println(Constantes.DEBE_INGRESAR_UNA_OPCION_VALIDA);
             }
@@ -244,12 +273,18 @@ public class InterfazFruteria {
                     int indice = Integer.parseInt(entradaReader.readLine());
                     System.out.println(Constantes.INGRESE_EL_PRECIO_A_ACTUALIZAR);
                     double precio = Double.parseDouble(entradaReader.readLine());
-
-                    if (gestionFruteria.actualizarPrecioVentaID(indice-1, precio)) {
-                        System.out.println(Constantes.ACTUALIZACION_EXITOSA);
+                    Fruta aux = gestionFruteria.getFrutas().get(indice-1);
+                    if (indice < 0 || indice >= gestionFruteria.getFrutas().size()) {
+                        System.out.println(Constantes.INDICE_FUERA_DE_RANGO);
                     } else {
-                        System.out.println(Constantes.ACTUALIZACION_FALLIDA);
+                        if (gestionFruteria.actualizarPrecioVentaID(indice-1, precio)) {
+                            System.out.println(aux);
+                            System.out.println(Constantes.ACTUALIZACION_EXITOSA);
+                        } else {
+                            System.out.println(Constantes.ACTUALIZACION_FALLIDA);
+                        }
                     }
+
                 }
                 case 2 -> {
                     System.out.println(Constantes.INGRESE_EL_NOMBRE_DE_LA_FRUTA);
@@ -258,22 +293,22 @@ public class InterfazFruteria {
                     double precio = Double.parseDouble(entradaReader.readLine());
                     List<Fruta> frutas = gestionFruteria.getFrutas();
                     List <Fruta> frutas2 = new ArrayList<>();
-                    Fruta fruta = null;
                     for (Fruta f : frutas) {
                         if (f.getNombre().strip().equalsIgnoreCase(nombre)) {
                             frutas2.add(f);
                         }
                     }
-
                     if (!frutas2.isEmpty()) {
                         for (int i = 0; i < frutas2.size(); i++) {
                             System.out.println(i + 1 + ". " + frutas2.get(i).getNombre());
                         }
                         System.out.println(Constantes.INGRESE_EL_INDICE_DE_LA_FRUTA);
                         int index = Integer.parseInt(entradaReader.readLine()) - 1;
-                        fruta = frutas2.get(index);
+                        Fruta fruta = frutas2.get(index);
                         if (gestionFruteria.actualizarPrecioVenta(fruta, precio)) {
+
                             System.out.println(Constantes.ACTUALIZACION_EXITOSA);
+                            System.out.println(fruta);
                         } else {
                             System.out.println(Constantes.ACTUALIZACION_FALLIDA);
                         }
@@ -296,8 +331,9 @@ public class InterfazFruteria {
             String fruta1 = entradaReader.readLine();
             System.out.println(Constantes.INGRESE_EL_NOMBRE_DE_LA_FRUTA + 2);
             String fruta2 = entradaReader.readLine();
-            if (gestionFruteria.frutasDeMismaProcedencia(fruta1, fruta2)) {
+            if (gestionFruteria.frutasDeMismaProcedencia(fruta1, fruta2)!=null && !gestionFruteria.frutasDeMismaProcedencia(fruta1, fruta2).isEmpty()) {
                 System.out.println(Constantes.COMPARACION_EXITOSA);
+                gestionFruteria.frutasDeMismaProcedencia(fruta1, fruta2).forEach(System.out::println);
             } else {
                 System.out.println(Constantes.COMPARACION_FALLIDA);
             }
@@ -311,8 +347,9 @@ public class InterfazFruteria {
         try  {
             System.out.println(Constantes.INGRESE_LA_PROCENDENCIA);
             String procedencia = entradaReader.readLine();
-            if (gestionFruteria.reunirFrutasporProcedencia(procedencia)) {
+            if (gestionFruteria.reunirFrutasporProcedencia(procedencia)!=null) {
                 System.out.println(Constantes.FRUTAS_REUNIDAS_EXITOSAMENTE);
+                gestionFruteria.reunirFrutasporProcedencia(procedencia).forEach(System.out::println);
             } else {
                 System.out.println(Constantes.FRUTAS_REUNIDAS_FALLIDAS);
             }
@@ -326,8 +363,9 @@ public class InterfazFruteria {
         try {
             System.out.println(Constantes.INGRESE_EL_NOMBRE_DE_LA_FRUTA);
             String nombre = entradaReader.readLine();
-            if (gestionFruteria.buscarFrutaPorNombre(nombre)) {
+            if (gestionFruteria.buscarFrutaPorNombre(nombre)!=null && !gestionFruteria.buscarFrutaPorNombre(nombre).isEmpty()) {
                 System.out.println(Constantes.ENCONTRADO_EXITOSO);
+                gestionFruteria.buscarFrutaPorNombre(nombre).forEach(System.out::println);
             } else {
                 System.out.println(Constantes.ENCONTRADO_FALLIDO);
             }

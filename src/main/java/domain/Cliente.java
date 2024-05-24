@@ -1,11 +1,12 @@
 package domain;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import net.datafaker.Faker;
 
 import java.io.Serializable;
-@Getter@Setter
+@Getter @Setter
 public abstract class Cliente implements Serializable {
     protected String nombre,apellidos;
     protected boolean hasDescuento;

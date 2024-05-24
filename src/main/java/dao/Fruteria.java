@@ -68,16 +68,14 @@ public class Fruteria implements Serializable {
         boolean nombreRepetido = frutas.stream().anyMatch(f -> f.getNombre().equalsIgnoreCase(fruta.getNombre()));
         // Agregar la fruta si el nombre no está repetido, de lo contrario, imprimir un mensaje de error
         if (!nombreRepetido) {
-            frutas.add(fruta);
-            System.out.println(Constantes.FRUTA_AGREGADA_CON_EXITO);
-            return true;
-        } else {
-            System.out.println(Constantes.YA_EXISTE_UNA_FRUTA_CON_EL_MISMO_NOMBRE_EN_LA_FRUTERIA);
-        }
-        try {
-            DaoFicherosFruta.escribirFichero(frutas);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            try {
+                frutas.add(fruta);
+                DaoFicherosFruta.escribirFichero(frutas);
+                return true;
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
         }
         return false;
     }
@@ -115,6 +113,16 @@ public class Fruteria implements Serializable {
         return frutas.removeIf(fruta -> fruta.getProcedencia().equalsIgnoreCase(procedencia));
     }
 
+    public Fruta devolverFrutaNombre (String nombreFruta) {
+        for (Fruta fruta : frutas) {
+            if (fruta.getNombre().equalsIgnoreCase(nombreFruta)) {
+                return fruta;
+            }
+        }
+        return null;
+
+    }
+
 
     public boolean rebajar(double cantidad, int indexFruta) {
         if (indexFruta >= 0 && indexFruta < frutas.size()) {
@@ -123,16 +131,9 @@ public class Fruteria implements Serializable {
                 double nuevoPrecioVenta = fruta.getPrecioVentaPorKilo() - cantidad;
                 if (nuevoPrecioVenta >= fruta.getPrecioCostePorKilo()) {
                     fruta.setPrecioVentaPorKilo(nuevoPrecioVenta);
-                    System.out.println(fruta);
                     return true;
-                } else {
-                    System.out.println(Constantes.LA_CANTIDAD_DE_REBAJA_ES_DEMASIADO_GRANDE_Y_HARIA_QUE_EL_PRECIO_DE_VENTA_SEA_MENOR_QUE_EL_PRECIO_DE_COSTE);
                 }
-            } else {
-                System.out.println(Constantes.ERROR_FRUTA_NULA);
             }
-        } else {
-            System.out.println(Constantes.INDICE_FUERA_DE_RANGO);
         }
         return false;
     }
@@ -148,13 +149,10 @@ public class Fruteria implements Serializable {
             double nuevoPrecioVenta = auxLista.getPrecioVentaPorKilo() - cantidad;
             if (nuevoPrecioVenta >= auxLista.getPrecioCostePorKilo()) {
                 auxLista.setPrecioVentaPorKilo(nuevoPrecioVenta);
-                System.out.println(auxLista);
             } else {
-                System.out.println(Constantes.LA_CANTIDAD_DE_REBAJA_ES_DEMASIADO_GRANDE_Y_HARIA_QUE_EL_PRECIO_DE_VENTA_SEA_MENOR_QUE_EL_PRECIO_DE_COSTE);
                 return false;
             }
         } else {
-            System.err.println(Constantes.NO_SE_HA_ENCONTRADO_LA_FRUTA_LLAMADA + nombreFruta);
             return false;
         }
         return true;
@@ -169,15 +167,8 @@ public class Fruteria implements Serializable {
                     fruta.setPrecioVentaPorKilo(nuevoPrecioVenta);
                     System.out.println(fruta);
                     return true;
-                } else {
-                    System.out.println(Constantes.LA_CANTIDAD_DE_PRECIO_ES_DEMASIADO_GRANDE_Y_HARIA_QUE_EL_PRECIO_DE_VENTA_SEA_INNACESIBLE_PARA_NUESTROS_CLIENTES);
                 }
-            } else {
-                System.out.println(Constantes.ERROR_FRUTA_NULA);
             }
-
-        } else {
-            System.out.println(Constantes.INDICE_FUERA_DE_RANGO);
         }
         return false;
     }
@@ -195,11 +186,9 @@ public class Fruteria implements Serializable {
                 auxLista.setPrecioVentaPorKilo(nuevoPrecioVenta);
                 System.out.println(auxLista);
             } else {
-                System.out.println(Constantes.LA_CANTIDAD_DE_PRECIO_ES_DEMASIADO_GRANDE_Y_HARIA_QUE_EL_PRECIO_DE_VENTA_SEA_INNACESIBLE_PARA_NUESTROS_CLIENTES);
                 return false;
             }
         } else {
-            System.err.println(Constantes.NO_SE_HAN_ENCONTRADO_NINGUNA_FRUTA_LLAMADA + nombreFruta);
             return false;
         }
         return true;
@@ -222,25 +211,21 @@ public class Fruteria implements Serializable {
         if (id < 0 || id >= frutas.size()) {
             return false;
         }
-        Fruta fruta = frutas.get(id);
-        if (fruta == null) {
-            return false;
-        }
-        if (nuevoPrecioVenta < fruta.getPrecioCostePorKilo()) {
-            return false;
-        }
-        fruta.setPrecioVentaPorKilo(nuevoPrecioVenta);
+        frutas.get(id).setPrecioVentaPorKilo(nuevoPrecioVenta);
         return true;
     }
 
-    public boolean frutasDeMismaProcedencia(String nombre1, String nombre2) {
+    public List<Fruta> frutasDeMismaProcedencia(String nombre1, String nombre2) {
+
+        List<Fruta> frutasProcedencia = new ArrayList<>();
         boolean valid = false;
         for (int i = 0; i < frutas.size() && !valid; i++) {
             if (frutas.get(i).getNombre().strip().equalsIgnoreCase(nombre1)) {
                 for (int j = 0; j < frutas.size() && !valid; j++) {
                     if (frutas.get(j).getNombre().strip().equalsIgnoreCase(nombre2)) {
                         if (frutas.get(i).getProcedencia().equalsIgnoreCase(frutas.get(j).getProcedencia())) {
-                            System.out.println(Constantes.SE_HAN_ENCONTRADO_DOS_FRUTAS_CON_LA_MISMA_PROCEDENCIA + frutas.get(i) + "\n" + frutas.get(j));
+                            frutasProcedencia.add(frutas.get(i));
+                            frutasProcedencia.add(frutas.get(j));
                             valid = true;
                         }
                     }
@@ -248,45 +233,22 @@ public class Fruteria implements Serializable {
             }
         }
 
-        return valid;
+        return frutasProcedencia;
     }
 
 
-    public boolean reunirFrutasporProcedencia(String procedencia) {
+    public List<Fruta> reunirFrutasporProcedencia(String procedencia) {
         Map<String, List<Fruta>> frutasPorProcedencia = frutas.stream().collect(Collectors.groupingBy(Fruta::getProcedencia));
         List<Fruta> frutasProcedencia = frutasPorProcedencia.get(procedencia);
         if (frutasProcedencia != null && !frutasProcedencia.isEmpty()) {
-            System.out.println(Constantes.FRUTAS_DE + procedencia);
-            System.out.println(Constantes.SEPARADOR);
-            frutasProcedencia.forEach(System.out::println);
-            return true;
+            return frutasProcedencia;
         } else {
-            System.out.println(Constantes.NO_EXISTEN_FRUTAS_DE + procedencia);
-            return false;
+            return null;
         }
     }
 
-    public boolean buscarFrutaPorNombre(String nombreFruta) {
-        boolean valido = false;
-        Fruta aux = null;
-        List<Fruta> frutasEncontradas = frutas.stream()
-                .filter(fruta -> fruta.getNombre().strip().equalsIgnoreCase(nombreFruta))
-                .toList();
-
-        if (!frutasEncontradas.isEmpty()) {
-            aux = frutasEncontradas.get(0);
-            if (aux != null) {
-                System.out.println(Constantes.SE_HA_ENCONTRADO_LA_FRUTA_LLAMADA + aux.getNombre());
-                System.out.println(Constantes.SEPARADOR);
-                System.out.println(aux);
-                valido = true;
-            } else {
-                System.out.println(Constantes.ERROR_FRUTA_NULA);
-            }
-        } else {
-            System.out.println(Constantes.LA_FRUTA_NO_SE_ENCONTRO_EN_EL_INVENTARIO);
-        }
-        return valido;
+    public List<Fruta> buscarFrutaPorNombre(String nombreFruta) {
+        return frutas.stream().filter(fruta -> fruta.getNombre().strip().equalsIgnoreCase(nombreFruta)).toList();
     }
 
     public List<Fruta> frutasConMayorNumeroVendido() {

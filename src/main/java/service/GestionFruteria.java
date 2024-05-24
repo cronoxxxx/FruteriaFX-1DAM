@@ -79,17 +79,17 @@ public class GestionFruteria implements IGestionFruteria {
     }
 
     @Override
-    public boolean frutasDeMismaProcedencia(String nombre1, String nombre2) {
+    public List<Fruta> frutasDeMismaProcedencia(String nombre1, String nombre2) {
         return daoFruteriaImplementacion.frutasDeMismaProcedencia(nombre1, nombre2);
     }
 
     @Override
-    public boolean reunirFrutasporProcedencia(String procedencia) {
+    public List<Fruta> reunirFrutasporProcedencia(String procedencia) {
         return daoFruteriaImplementacion.reunirFrutasporProcedencia(procedencia);
     }
 
     @Override
-    public boolean buscarFrutaPorNombre(String nombreFruta) {
+    public List<Fruta> buscarFrutaPorNombre(String nombreFruta) {
         return daoFruteriaImplementacion.buscarFrutaPorNombre(nombreFruta);
     }
 

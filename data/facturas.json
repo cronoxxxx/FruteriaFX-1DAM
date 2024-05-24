@@ -380,5 +380,715 @@
     "almacenVenta": [
       800.0
     ]
+  },
+  {
+    "cliente": "Vivien",
+    "apellido": "Dietrich",
+    "fechaHora": "2024-05-24T21:22:44.519940600",
+    "frutasVendidas": [
+      {
+        "nombre": "Platano Canario",
+        "procedencia": "Canarias",
+        "numeroKilos": 182,
+        "precioCostePorKilo": 300.0,
+        "precioVentaPorKilo": 400.0,
+        "fechaCaducidad": "2026-06-06",
+        "cuantasVecesSeVendio": 8
+      }
+    ],
+    "precioCompra": 560.0,
+    "almacenVenta": [
+      560.0
+    ]
+  },
+  {
+    "cliente": "Vivien",
+    "apellido": "Dietrich",
+    "fechaHora": "2024-05-24T21:22:44.543424200",
+    "frutasVendidas": [
+      {
+        "nombre": "Platano Canario",
+        "procedencia": "Canarias",
+        "numeroKilos": 182,
+        "precioCostePorKilo": 300.0,
+        "precioVentaPorKilo": 400.0,
+        "fechaCaducidad": "2026-06-06",
+        "cuantasVecesSeVendio": 8
+      }
+    ],
+    "precioCompra": 560.0,
+    "almacenVenta": [
+      560.0
+    ]
+  },
+  {
+    "cliente": "Vivien",
+    "apellido": "Dietrich",
+    "fechaHora": "2024-05-24T21:22:44.550449500",
+    "frutasVendidas": [
+      {
+        "nombre": "Platano Canario",
+        "procedencia": "Canarias",
+        "numeroKilos": 182,
+        "precioCostePorKilo": 300.0,
+        "precioVentaPorKilo": 400.0,
+        "fechaCaducidad": "2026-06-06",
+        "cuantasVecesSeVendio": 8
+      }
+    ],
+    "precioCompra": 560.0,
+    "almacenVenta": [
+      560.0
+    ]
+  },
+  {
+    "cliente": "Farrah",
+    "apellido": "Rippin",
+    "fechaHora": "2024-05-24T21:24:06.820445400",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 14,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 3
+      },
+      {
+        "nombre": "Platano Canario",
+        "procedencia": "Canarias",
+        "numeroKilos": 176,
+        "precioCostePorKilo": 300.0,
+        "precioVentaPorKilo": 400.0,
+        "fechaCaducidad": "2026-06-06",
+        "cuantasVecesSeVendio": 11
+      }
+    ],
+    "precioCompra": 880.0,
+    "almacenVenta": [
+      80.0,
+      800.0
+    ]
+  },
+  {
+    "cliente": "Farrah",
+    "apellido": "Rippin",
+    "fechaHora": "2024-05-24T21:24:06.850239700",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 14,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 3
+      },
+      {
+        "nombre": "Platano Canario",
+        "procedencia": "Canarias",
+        "numeroKilos": 176,
+        "precioCostePorKilo": 300.0,
+        "precioVentaPorKilo": 400.0,
+        "fechaCaducidad": "2026-06-06",
+        "cuantasVecesSeVendio": 11
+      }
+    ],
+    "precioCompra": 880.0,
+    "almacenVenta": [
+      80.0,
+      800.0
+    ]
+  },
+  {
+    "cliente": "Farrah",
+    "apellido": "Rippin",
+    "fechaHora": "2024-05-24T21:24:06.858210700",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 14,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 3
+      },
+      {
+        "nombre": "Platano Canario",
+        "procedencia": "Canarias",
+        "numeroKilos": 176,
+        "precioCostePorKilo": 300.0,
+        "precioVentaPorKilo": 400.0,
+        "fechaCaducidad": "2026-06-06",
+        "cuantasVecesSeVendio": 11
+      }
+    ],
+    "precioCompra": 880.0,
+    "almacenVenta": [
+      80.0,
+      800.0
+    ]
+  },
+  {
+    "cliente": "Stacey",
+    "apellido": "Weimann",
+    "fechaHora": "2024-05-24T21:47:49.076907300",
+    "frutasVendidas": [
+      {
+        "nombre": "Platano Canario",
+        "procedencia": "Canarias",
+        "numeroKilos": 170,
+        "precioCostePorKilo": 300.0,
+        "precioVentaPorKilo": 400.0,
+        "fechaCaducidad": "2026-06-06",
+        "cuantasVecesSeVendio": 14
+      }
+    ],
+    "precioCompra": 560.0,
+    "almacenVenta": [
+      560.0
+    ]
+  },
+  {
+    "cliente": "Stacey",
+    "apellido": "Weimann",
+    "fechaHora": "2024-05-24T21:47:49.100141500",
+    "frutasVendidas": [
+      {
+        "nombre": "Platano Canario",
+        "procedencia": "Canarias",
+        "numeroKilos": 170,
+        "precioCostePorKilo": 300.0,
+        "precioVentaPorKilo": 400.0,
+        "fechaCaducidad": "2026-06-06",
+        "cuantasVecesSeVendio": 14
+      }
+    ],
+    "precioCompra": 560.0,
+    "almacenVenta": [
+      560.0
+    ]
+  },
+  {
+    "cliente": "Stacey",
+    "apellido": "Weimann",
+    "fechaHora": "2024-05-24T21:47:49.107405200",
+    "frutasVendidas": [
+      {
+        "nombre": "Platano Canario",
+        "procedencia": "Canarias",
+        "numeroKilos": 170,
+        "precioCostePorKilo": 300.0,
+        "precioVentaPorKilo": 400.0,
+        "fechaCaducidad": "2026-06-06",
+        "cuantasVecesSeVendio": 14
+      }
+    ],
+    "precioCompra": 560.0,
+    "almacenVenta": [
+      560.0
+    ]
+  },
+  {
+    "cliente": "Lea",
+    "apellido": "Beier",
+    "fechaHora": "2024-05-24T21:51:07.074351200",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 8,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 6
+      }
+    ],
+    "precioCompra": 80.0,
+    "almacenVenta": [
+      80.0
+    ]
+  },
+  {
+    "cliente": "Lea",
+    "apellido": "Beier",
+    "fechaHora": "2024-05-24T21:51:07.102324700",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 8,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 6
+      }
+    ],
+    "precioCompra": 80.0,
+    "almacenVenta": [
+      80.0
+    ]
+  },
+  {
+    "cliente": "Lea",
+    "apellido": "Beier",
+    "fechaHora": "2024-05-24T21:51:07.113997900",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 8,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 6
+      }
+    ],
+    "precioCompra": 80.0,
+    "almacenVenta": [
+      80.0
+    ]
+  },
+  {
+    "cliente": "Ludie",
+    "apellido": "Lind",
+    "fechaHora": "2024-05-24T21:54:57.613563600",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 5,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 9
+      }
+    ],
+    "precioCompra": 28.0,
+    "almacenVenta": [
+      28.0
+    ]
+  },
+  {
+    "cliente": "Ludie",
+    "apellido": "Lind",
+    "fechaHora": "2024-05-24T21:54:57.638406",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 5,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 9
+      }
+    ],
+    "precioCompra": 28.0,
+    "almacenVenta": [
+      28.0
+    ]
+  },
+  {
+    "cliente": "Ludie",
+    "apellido": "Lind",
+    "fechaHora": "2024-05-24T21:54:57.650342100",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 5,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 9
+      }
+    ],
+    "precioCompra": 28.0,
+    "almacenVenta": [
+      28.0
+    ]
+  },
+  {
+    "cliente": "Marian",
+    "apellido": "Beer",
+    "fechaHora": "2024-05-24T21:57:39.734898800",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 0,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 13
+      }
+    ],
+    "precioCompra": 40.0,
+    "almacenVenta": [
+      40.0
+    ]
+  },
+  {
+    "cliente": "Marian",
+    "apellido": "Beer",
+    "fechaHora": "2024-05-24T21:57:39.764860400",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 0,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 13
+      }
+    ],
+    "precioCompra": 40.0,
+    "almacenVenta": [
+      40.0
+    ]
+  },
+  {
+    "cliente": "Marian",
+    "apellido": "Beer",
+    "fechaHora": "2024-05-24T21:57:39.773877400",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 0,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 13
+      }
+    ],
+    "precioCompra": 40.0,
+    "almacenVenta": [
+      40.0
+    ]
+  },
+  {
+    "cliente": "Jerica",
+    "apellido": "MacGyver",
+    "fechaHora": "2024-05-24T21:58:42.783545200",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 0,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 13
+      }
+    ],
+    "precioCompra": 56.0,
+    "almacenVenta": [
+      56.0
+    ]
+  },
+  {
+    "cliente": "Renita",
+    "apellido": "Roob",
+    "fechaHora": "2024-05-24T22:06:58.578535600",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 1,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 11
+      }
+    ],
+    "precioCompra": 56.0,
+    "almacenVenta": [
+      56.0
+    ]
+  },
+  {
+    "cliente": "Marian",
+    "apellido": "Beer",
+    "fechaHora": "2024-05-24T22:25:18.524305400",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 0,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 14
+      }
+    ],
+    "precioCompra": 40.0,
+    "almacenVenta": [
+      40.0
+    ]
+  },
+  {
+    "cliente": "Marian",
+    "apellido": "Beer",
+    "fechaHora": "2024-05-24T22:25:18.553515500",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 0,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 14
+      }
+    ],
+    "precioCompra": 40.0,
+    "almacenVenta": [
+      40.0
+    ]
+  },
+  {
+    "cliente": "Marian",
+    "apellido": "Beer",
+    "fechaHora": "2024-05-24T22:25:18.567755300",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 0,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 14
+      }
+    ],
+    "precioCompra": 40.0,
+    "almacenVenta": [
+      40.0
+    ]
+  },
+  {
+    "cliente": "Eveline",
+    "apellido": "Nolan",
+    "fechaHora": "2024-05-24T22:26:53.740876100",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 0,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 14
+      }
+    ],
+    "precioCompra": 28.0,
+    "almacenVenta": [
+      28.0
+    ]
+  },
+  {
+    "cliente": "Eveline",
+    "apellido": "Nolan",
+    "fechaHora": "2024-05-24T22:26:53.756167800",
+    "frutasVendidas": [
+      {
+        "nombre": "Manzana Vasca",
+        "procedencia": "Vizcaya",
+        "numeroKilos": 0,
+        "precioCostePorKilo": 30.0,
+        "precioVentaPorKilo": 40.0,
+        "fechaCaducidad": "2024-09-20",
+        "cuantasVecesSeVendio": 14
+      }
+    ],
+    "precioCompra": 28.0,
+    "almacenVenta": [
+      28.0
+    ]
+  },
+  {
+    "cliente": "Norris",
+    "apellido": "Kuhn",
+    "fechaHora": "2024-05-24T22:31:28.297922300",
+    "frutasVendidas": [
+      {
+        "nombre": "Naranja4",
+        "procedencia": "IslasBaleares",
+        "numeroKilos": 8734,
+        "precioCostePorKilo": 16.837429607586945,
+        "precioVentaPorKilo": 42.96410182849382,
+        "fechaCaducidad": "2027-03-17",
+        "cuantasVecesSeVendio": 119
+      }
+    ],
+    "precioCompra": 42.96410182849382,
+    "almacenVenta": [
+      42.96410182849382
+    ]
+  },
+  {
+    "cliente": "Norris",
+    "apellido": "Kuhn",
+    "fechaHora": "2024-05-24T22:31:28.326725",
+    "frutasVendidas": [
+      {
+        "nombre": "Naranja4",
+        "procedencia": "IslasBaleares",
+        "numeroKilos": 8734,
+        "precioCostePorKilo": 16.837429607586945,
+        "precioVentaPorKilo": 42.96410182849382,
+        "fechaCaducidad": "2027-03-17",
+        "cuantasVecesSeVendio": 119
+      }
+    ],
+    "precioCompra": 42.96410182849382,
+    "almacenVenta": [
+      42.96410182849382
+    ]
+  },
+  {
+    "cliente": "Norris",
+    "apellido": "Kuhn",
+    "fechaHora": "2024-05-24T22:31:28.334665500",
+    "frutasVendidas": [
+      {
+        "nombre": "Naranja4",
+        "procedencia": "IslasBaleares",
+        "numeroKilos": 8734,
+        "precioCostePorKilo": 16.837429607586945,
+        "precioVentaPorKilo": 42.96410182849382,
+        "fechaCaducidad": "2027-03-17",
+        "cuantasVecesSeVendio": 119
+      }
+    ],
+    "precioCompra": 42.96410182849382,
+    "almacenVenta": [
+      42.96410182849382
+    ]
+  },
+  {
+    "cliente": "Jill",
+    "apellido": "Dickens",
+    "fechaHora": "2024-05-24T22:31:47.342713600",
+    "frutasVendidas": [
+      {
+        "nombre": "Naranja4",
+        "procedencia": "IslasBaleares",
+        "numeroKilos": 8734,
+        "precioCostePorKilo": 16.837429607586945,
+        "precioVentaPorKilo": 42.96410182849382,
+        "fechaCaducidad": "2027-03-17",
+        "cuantasVecesSeVendio": 119
+      }
+    ],
+    "precioCompra": 42.96410182849382,
+    "almacenVenta": [
+      42.96410182849382
+    ]
+  },
+  {
+    "cliente": "Jill",
+    "apellido": "Dickens",
+    "fechaHora": "2024-05-24T22:31:47.353766900",
+    "frutasVendidas": [
+      {
+        "nombre": "Naranja4",
+        "procedencia": "IslasBaleares",
+        "numeroKilos": 8734,
+        "precioCostePorKilo": 16.837429607586945,
+        "precioVentaPorKilo": 42.96410182849382,
+        "fechaCaducidad": "2027-03-17",
+        "cuantasVecesSeVendio": 119
+      }
+    ],
+    "precioCompra": 42.96410182849382,
+    "almacenVenta": [
+      42.96410182849382
+    ]
+  },
+  {
+    "cliente": "Jill",
+    "apellido": "Dickens",
+    "fechaHora": "2024-05-24T22:31:47.361555900",
+    "frutasVendidas": [
+      {
+        "nombre": "Naranja4",
+        "procedencia": "IslasBaleares",
+        "numeroKilos": 8734,
+        "precioCostePorKilo": 16.837429607586945,
+        "precioVentaPorKilo": 42.96410182849382,
+        "fechaCaducidad": "2027-03-17",
+        "cuantasVecesSeVendio": 119
+      }
+    ],
+    "precioCompra": 42.96410182849382,
+    "almacenVenta": [
+      42.96410182849382
+    ]
+  },
+  {
+    "cliente": "Sha",
+    "apellido": "Hickle",
+    "fechaHora": "2024-05-24T22:39:10.035794200",
+    "frutasVendidas": [
+      {
+        "nombre": "Naranja4",
+        "procedencia": "IslasBaleares",
+        "numeroKilos": 8737,
+        "precioCostePorKilo": 16.837429607586945,
+        "precioVentaPorKilo": 42.96410182849382,
+        "fechaCaducidad": "2027-03-17",
+        "cuantasVecesSeVendio": 116
+      }
+    ],
+    "precioCompra": 42.96410182849382,
+    "almacenVenta": [
+      42.96410182849382
+    ]
+  },
+  {
+    "cliente": "Sha",
+    "apellido": "Hickle",
+    "fechaHora": "2024-05-24T22:39:10.077958500",
+    "frutasVendidas": [
+      {
+        "nombre": "Naranja4",
+        "procedencia": "IslasBaleares",
+        "numeroKilos": 8737,
+        "precioCostePorKilo": 16.837429607586945,
+        "precioVentaPorKilo": 42.96410182849382,
+        "fechaCaducidad": "2027-03-17",
+        "cuantasVecesSeVendio": 116
+      }
+    ],
+    "precioCompra": 42.96410182849382,
+    "almacenVenta": [
+      42.96410182849382
+    ]
+  },
+  {
+    "cliente": "Sha",
+    "apellido": "Hickle",
+    "fechaHora": "2024-05-24T22:39:10.085370700",
+    "frutasVendidas": [
+      {
+        "nombre": "Naranja4",
+        "procedencia": "IslasBaleares",
+        "numeroKilos": 8737,
+        "precioCostePorKilo": 16.837429607586945,
+        "precioVentaPorKilo": 42.96410182849382,
+        "fechaCaducidad": "2027-03-17",
+        "cuantasVecesSeVendio": 116
+      }
+    ],
+    "precioCompra": 42.96410182849382,
+    "almacenVenta": [
+      42.96410182849382
+    ]
   }
 ]

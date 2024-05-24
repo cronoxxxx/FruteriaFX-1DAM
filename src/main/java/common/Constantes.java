@@ -101,7 +101,7 @@ public class Constantes {
     public static final String FRUTAS_REUNIDAS_EXITOSAMENTE = "Frutas reunidas exitosamente.";
     public static final String FRUTAS_REUNIDAS_FALLIDAS = "Frutas reunidas fallidas.";
     public static final String MENU_MOSTRADOR = "1.Mostrar información de clientes\n2.Realizar venta a un cliente\n3.Mostar los beneficios obtenidos de transacciones\n4.Agregar a un nuevo cliente en espera de una compra\n5.Buscar cliente\n6.Eliminar cliente\n7.Aplicar descuentos a un cliente\n8.Reunir clientes por ciudad\n9.Mostrar facturas hechas\n10.Buscar facturas por argumento\n11.Actualizar datos de una factura\n12.Salir\nElija una de las opciones: ";
-    public static final String SELECCIONE_ORDEN_DE_MUESTRA = "Seleccione el orden de muestra:\n1.Mostrar en orden ascendente\n2.Mostrar en orden descendente\nElija una de las opciones: ";
+    public static final String SELECCIONE_ORDEN_DE_MUESTRA = "Seleccione el orden de muestra:\n1.Mostrar en orden ascendente\n2.Mostrar en orden descendente\n3. Mostrar sin criterio\nElija una de las opciones: ";
     public static final String ORDENAR_MOSTRAR_MOSTRADOR = "1.Ordenar por claves\n2.Ordenar por nombre\nElija una de las opciones: ";
     public static final String INGRESE_EL_NOMBRE_DEL_CLIENTE = "Ingrese el nombre del cliente: ";
     public static final String QUE_CLIENTE_DAR_ALTA = "Que cliente dar de alta?\n1.Cliente físico\n2.Cliente en línea\nElija una de las opciones: ";
@@ -157,4 +157,5 @@ public class Constantes {
 
     public static final String ACTUALIZACION_FALLIDA = "Actualizado fallido.";
     public static final String FRUTA_NO_ENCONTRADA = "La fruta no ha sido encontrada.";
+    public static final String CANTIDADES_VENDIDAS = "Las cantidades vendidas son: ";
 }

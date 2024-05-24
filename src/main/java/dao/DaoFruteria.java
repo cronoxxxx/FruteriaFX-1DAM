@@ -20,9 +20,9 @@ public interface DaoFruteria {
     boolean subirNombreFruta (double cantidad, String nombreFruta);
     double calcularInventarioTotal();
     boolean actualizarPrecioVenta(Fruta nombreFruta, double nuevoPrecioVenta);
-    boolean frutasDeMismaProcedencia(String nombre1, String nombre2);
-    boolean reunirFrutasporProcedencia(String procedencia);
-    boolean buscarFrutaPorNombre(String nombreFruta);
+    List<Fruta> frutasDeMismaProcedencia(String nombre1, String nombre2);
+    List<Fruta> reunirFrutasporProcedencia(String procedencia);
+    List<Fruta> buscarFrutaPorNombre(String nombreFruta);
     boolean removeFrutasSinContenido();
     boolean eliminarFrutasCaducadas();
     void eliminarTodo();

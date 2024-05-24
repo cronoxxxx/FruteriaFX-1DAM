@@ -23,7 +23,7 @@ public class Mostrador implements Serializable {
     private final Fruteria fruteria;
     private double beneficios;
     private final Database database;
-    private static int fila = 1;
+    private int fila;
     private final Set<Factura> facturas; //No colocará doble factura
     public Mostrador() {
         database = DaoFicherosFruta.leerFicheroBinarioData();
@@ -31,21 +31,29 @@ public class Mostrador implements Serializable {
         facturas = loadFacturas();
         clientesEsperaCompra = database.getClientesEsperaCompra();
         this.beneficios = database.getBeneficios();
+        this.fila = database.getFila();
     }
     public boolean isEmptyClientes() {
         return clientesEsperaCompra.isEmpty();
     }
 
     public void saveBeneficios() {
-    database.setBeneficios(this.beneficios);
-    //DaoFicherosFruta.escribirFicheroBinarioData(database);
-}
+        database.setBeneficios(this.beneficios);
+        //DaoFicherosFruta.escribirFicheroBinarioData(database);
+    }
+
+    public void saveFila() {
+        database.setFila(this.fila);
+        //DaoFicherosFruta.escribirFicheroBinarioData(database);
+    }
+
+
 
     public boolean putCliente(Cliente valor) {
         if (valor instanceof ClienteFisico) {
             // Obtener el último orden de fila de los clientes físicos existentes
             int ultimoOrdenFila = clientesEsperaCompra.values().stream().filter(cliente -> cliente instanceof ClienteFisico)
-                .mapToInt(cliente -> ((ClienteFisico) cliente).getOrdenFila()).max().orElse(0);
+                    .mapToInt(cliente -> ((ClienteFisico) cliente).getOrdenFila()).max().orElse(0);
             // Asignar el nuevo cliente físico con un orden de fila incrementado
             ((ClienteFisico) valor).setOrdenFila(ultimoOrdenFila + 1);
             // Agregar el nuevo cliente a la lista
@@ -68,7 +76,7 @@ public class Mostrador implements Serializable {
 
     public Map<Integer, Cliente> mostrarInformacionporNombre(boolean ascendente) {
         Comparator<Cliente> comparator = new Comparators.ComparatorCliente().thenComparing(Cliente::getApellidos);
-        // Comparador para ordenar por nombre y luego por procedencia
+        // Comparador para ordenar por nombre y luego por apellido
         Map<Integer, Cliente> sortedMap = clientesEsperaCompra.entrySet().stream()
                 .sorted(ascendente ? Map.Entry.comparingByValue(comparator) : Map.Entry.comparingByValue(comparator.reversed()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> oldValue, LinkedHashMap::new));
@@ -76,7 +84,7 @@ public class Mostrador implements Serializable {
         return sortedMap;
     }
 
-    public Cliente devolverClienteFisico() {
+    public ClienteFisico devolverClienteFisico() {
         ClienteFisico clienteComprador = null;
         List<Cliente> clientesEnEspera = new LinkedList<>(clientesEsperaCompra.values());
         //Uso del optional
@@ -88,11 +96,12 @@ public class Mostrador implements Serializable {
         } else {
             System.out.println(Constantes.CLIENTE_NO_ENCONTRADO);
         }
-        fila++;
+        fila+=1;
+        saveFila();
         return clienteComprador;
     }
 
-    public boolean venderClienteFisico(Cliente clienteComprador, StringBuilder sb, int... cantidadKilos) {
+    public List<Double> venderCliente(Cliente clienteComprador, StringBuilder sb, int[] cantidadKilos) {
         List<Fruta> agregarCompraFrutasFactura = new ArrayList<>();
         String nombreFruta;
         double sumadorVenta = 0;
@@ -109,48 +118,34 @@ public class Mostrador implements Serializable {
             for (int i = 0; i < fruteria.getFrutas().size(); i++) {
                 Fruta fruta = fruteria.getFrutas().get(i);
                 if (fruta.getNombre().strip().equalsIgnoreCase(nombreFruta.strip())) {
-
                     // Se encontró la fruta, realizar la venta
                     frutaEncontrada = true;
                     if (fruta.getNumeroKilos() < cantidadKilos[j]) {
-                        System.out.println(Constantes.LO_SENTIMOS_SOLO_TENEMOS_ESTA_CANTIDAD_DE_KILOS_PARA + nombreFruta);
-                        System.out.println(fruta.getNumeroKilos());
+                        return null;
                     } else {
                         double precioUnitario = fruta.getPrecioVentaPorKilo();
                         double precioVentaFruta = precioUnitario * cantidadKilos[j];
-
                         if (clienteComprador.isHasDescuento()) {
                             descuento = precioVentaFruta * 0.7; // Aplicar descuento del 30%
                             almacenPrecios.add(precioVentaFruta * 0.7);
-                            System.out.println(Constantes.DESCUENTO_EN_LECTURA);
                         } else {
                             descuento = precioVentaFruta;
                             almacenPrecios.add(precioVentaFruta);
-                            System.out.println(Constantes.NO_DESCUENTO_EN_LECTURA);
                         }
-
                         fruta.setNumeroKilos(fruta.getNumeroKilos() - cantidadKilos[j]);
                         beneficios += descuento;
                         saveBeneficios();
                         sumadorVenta += descuento;
-
-                        System.out.println(Constantes.KILOS_VENDIDOS + cantidadKilos[j]);
-                        System.out.println(Constantes.NOMBRE_FRUTA + fruta.getNombre());
-                        System.out.println(Constantes.TOTAL_EUROS + descuento);
                         agregarCompraFrutasFactura.add(fruta);
                         fruta.setAgregarNumeroVentas();
                     }
                     j++;
                 }
-
             }
-
             if (!frutaEncontrada) {
-                System.out.println(Constantes.FRUTA_NO_DISPONIBLE + nombreFruta);
-                return false;
+                return null;
             }
         }
-        System.out.println(Constantes.TOTAL_EUROS + sumadorVenta);
         Factura factura = new Factura( clienteComprador.getNombre(), clienteComprador.getApellidos(), agregarCompraFrutasFactura, sumadorVenta, almacenPrecios);
         facturas.add(factura);
         saveFacturas(facturas);
@@ -160,7 +155,7 @@ public class Mostrador implements Serializable {
                 .map(Map.Entry::getKey)
                 .findFirst()
                 .ifPresent(clientesEsperaCompra::remove);
-        return true;
+        return almacenPrecios;
     }
 
     public Cliente devolverClienteOnline(int id) {
@@ -183,79 +178,7 @@ public class Mostrador implements Serializable {
     }
 
 
-    public boolean venderClienteOnline(Cliente clienteCompradorOnline, StringBuilder sb, int... cantidadKilos) {
-        List<Fruta> agregarCompraFrutasFactura = new LinkedList<>();
 
-        double sumadorPrecio = 0;
-        double descontado;
-        String nombreFrutasString = sb.toString();
-        List<Double> almacenPrecios = new LinkedList<>();
-        nombreFrutasString = nombreFrutasString.substring(0, nombreFrutasString.length() - 2); // Eliminar la ultima coma y espacio
-        Scanner frutasScanner = new Scanner(nombreFrutasString).useDelimiter("\\s*,\\s*");
-
-        while (frutasScanner.hasNextLine()) {
-            String nombreFruta = frutasScanner.next();
-            boolean frutaEncontrada = false;
-            int j = 0;
-            for (int i = 0; i < fruteria.getFrutas().size(); i++) {
-                Fruta fruta = fruteria.getFrutas().get(i);
-
-                if (fruta.getNombre().strip().equalsIgnoreCase(nombreFruta.strip())) {
-                    // Se encontró la fruta, realizar la venta
-                    frutaEncontrada = true;
-
-                    if (fruta.getNumeroKilos() < cantidadKilos[j]) {
-                        System.out.println(Constantes.LO_SENTIMOS_SOLO_TENEMOS_ESTA_CANTIDAD_DE_KILOS_PARA + nombreFruta);
-                        System.out.println(fruta.getNumeroKilos());
-
-                    } else {
-                        double precioUnitario = fruta.getPrecioVentaPorKilo();
-                        double precioVentaFruta = precioUnitario * cantidadKilos[j];
-
-                        if (clienteCompradorOnline.isHasDescuento()) {
-                            descontado = precioVentaFruta * 0.7; // Aplicar descuento del 30%
-                            almacenPrecios.add(precioVentaFruta * 0.7);
-                            System.out.println(Constantes.DESCUENTO_EN_LECTURA);
-                        } else {
-                            descontado = precioVentaFruta;
-                            almacenPrecios.add(precioVentaFruta);
-                            System.out.println(Constantes.NO_DESCUENTO_EN_LECTURA);
-                        }
-
-                        fruta.setNumeroKilos(fruta.getNumeroKilos() - cantidadKilos[j]);
-                        agregarCompraFrutasFactura.add(fruta);
-                        beneficios += descontado;
-                        saveBeneficios();
-                        sumadorPrecio += descontado;
-                        System.out.println(Constantes.KILOS_VENDIDOS + cantidadKilos[j]);
-                        System.out.println(Constantes.NOMBRE_FRUTA + fruta.getNombre());
-                        System.out.println(Constantes.TOTAL_EUROS + descontado);
-                        fruta.setAgregarNumeroVentas(); // Incrementar el contador de ventas
-
-                    }
-                    j++;
-                }
-            }
-            if (!frutaEncontrada) {
-                System.out.println(Constantes.FRUTA_NO_DISPONIBLE + nombreFruta);
-                return false;
-            }
-        }
-        //Se agrega la factura con los datos puestos
-
-        Factura factura = new Factura( clienteCompradorOnline.getNombre(), clienteCompradorOnline.getApellidos(), agregarCompraFrutasFactura, sumadorPrecio, almacenPrecios);
-        facturas.add(factura);
-        saveFacturas(facturas);
-        System.out.println(Constantes.TOTAL_EUROS + sumadorPrecio);
-
-        // Eliminar al cliente del mapa
-        clientesEsperaCompra.entrySet().stream()
-                .filter(entry -> entry.getValue().equals(clienteCompradorOnline))
-                .map(Map.Entry::getKey)
-                .findFirst()
-                .ifPresent(clientesEsperaCompra::remove);
-        return true;
-    }
 
     public boolean buscarClienteporID(int id) {
         Cliente cliente = clientesEsperaCompra.get(id);
@@ -286,7 +209,6 @@ public class Mostrador implements Serializable {
         if (ciudad == null) {
             System.out.println(Constantes.CIUDAD_VALOR_NULO);
         }
-
         Map<String, List<ClienteOnline>> clientesPorCiudad = clientesEsperaCompra.values().stream().filter(cliente -> cliente instanceof ClienteOnline)
                 .map(cliente -> (ClienteOnline) cliente).collect(Collectors.groupingBy(ClienteOnline::getCiudad));
 
@@ -440,5 +362,3 @@ public class Mostrador implements Serializable {
         return true;
     }
 }
-
-

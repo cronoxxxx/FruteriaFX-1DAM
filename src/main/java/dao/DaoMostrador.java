@@ -18,10 +18,10 @@ public interface DaoMostrador {
     Map<Integer, Cliente> mostrarInformacionporNombre(boolean ascendente);
 
 
-    boolean venderClienteFisico(Cliente clienteComprador, StringBuilder sb, int ...cantidadKilos);
+    List<Double> venderCliente(Cliente clienteComprador, StringBuilder sb, int ...cantidadKilos);
 
     double getBeneficios();
-    boolean venderClienteOnline(Cliente clienteCompradorOnline, StringBuilder sb, int ...cantidadKilos);
+
     boolean buscarClienteporID(int id);
     boolean buscarClienteNombreApellido(String nombre, String apellidos);
     boolean removeClienteporID(int id);

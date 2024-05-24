@@ -10,10 +10,7 @@ import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 public class InterfazMostrador {
 
@@ -319,11 +316,21 @@ public class InterfazMostrador {
                             System.out.println(Constantes.INGRESE_LA_CANTIDAD);
                             cantidades[i] = Integer.parseInt(entradaReader.readLine());
                         }
-
                         //sb.delete(sb.length() - 2, sb.length());
-                        if (gestionMostrador.venderClienteFisico(fisico, sb, cantidades)) {
-                            System.out.println(Constantes.OPERACION_EXITOSA);
-                        } else {
+                        if (gestionMostrador.venderCliente(fisico, sb, cantidades)!=null) {
+                            if (fisico.isHasDescuento()) {
+                                System.out.println(Constantes.DESCUENTO_EN_LECTURA);
+                            } else {
+                                System.out.println(Constantes.NO_DESCUENTO_EN_LECTURA);
+                            }
+                            System.out.println(Constantes.KILOS_VENDIDOS);
+                            Arrays.stream(cantidades).forEach(System.out::println);
+                            System.out.println(Constantes.CANTIDADES_VENDIDAS);
+                            gestionMostrador.venderCliente(fisico, sb, cantidades).forEach(System.out::println);
+                            System.out.println(Constantes.TOTAL_EUROS);
+                            double total = gestionMostrador.venderCliente(fisico, sb, cantidades).stream().reduce(0.0, Double::sum);
+                            System.out.println(total);
+                        } else if (gestionMostrador.venderCliente(fisico, sb, cantidades) == null) {
                             System.out.println(Constantes.OPERACION_FALLIDA);
                         }
                     } else {
@@ -337,7 +344,7 @@ public class InterfazMostrador {
                         case 1 -> {
                             System.out.println(Constantes.INGRESE_ID_DEL_CLIENTE);
                             int id = Integer.parseInt(entradaReader.readLine());
-                            Cliente online = gestionMostrador.devolverClienteOnline(id);
+                            Cliente online = gestionMostrador.devolverClienteOnline(id-1);
                             if (online != null) {
                                 System.out.println(Constantes.INGRESE_CUANTAS_FRUTAS_DESEA_VENDER);
                                 int cant = Integer.parseInt(entradaReader.readLine());
@@ -348,12 +355,23 @@ public class InterfazMostrador {
                                     System.out.println(Constantes.INGRESE_LA_CANTIDAD);
                                     cantidades[i] = Integer.parseInt(entradaReader.readLine());
                                 }
-                                if (gestionMostrador.venderClienteOnline(online, sb, cantidades)) {
-                                    System.out.println(Constantes.OPERACION_EXITOSA);
-                                } else {
+                                if (gestionMostrador.venderCliente(online, sb, cantidades)!=null ) {
+                                    if (online.isHasDescuento()) {
+                                        System.out.println(Constantes.DESCUENTO_EN_LECTURA);
+                                    } else {
+                                        System.out.println(Constantes.NO_DESCUENTO_EN_LECTURA);
+                                    }
+                                    System.out.println(Constantes.KILOS_VENDIDOS);
+                                    Arrays.stream(cantidades).forEach(System.out::println);
+                                    System.out.println(Constantes.CANTIDADES_VENDIDAS);
+                                    gestionMostrador.venderCliente(online, sb, cantidades).forEach(System.out::println);
+                                    System.out.println(Constantes.TOTAL_EUROS);
+                                    double total = gestionMostrador.venderCliente(online, sb, cantidades).stream().reduce(0.0, Double::sum);
+                                    System.out.println(total);
+                                } else if (gestionMostrador.venderCliente(online, sb, cantidades) == null) {
                                     System.out.println(Constantes.OPERACION_FALLIDA);
                                 }
-                            } else {
+                            } else  {
                                 System.out.println(Constantes.CLIENTE_VACIO);
                             }
                         }
@@ -377,11 +395,23 @@ public class InterfazMostrador {
                                     for (int i = 0; i < cant; i++) {
                                         System.out.println(Constantes.INGRESE_LA_FRUTA + (i + 1));
                                         sb.append(entradaReader.readLine()).append(", ");
+                                        System.out.println(Constantes.INGRESE_LA_CANTIDAD);
                                         cantidades[i] = Integer.parseInt(entradaReader.readLine());
                                     }
-                                    if (gestionMostrador.venderClienteOnline(online, sb, cantidades)) {
-                                        System.out.println(Constantes.OPERACION_EXITOSA);
-                                    } else {
+                                    if (gestionMostrador.venderCliente(online, sb, cantidades)!=null) {
+                                        if (online.isHasDescuento()) {
+                                            System.out.println(Constantes.DESCUENTO_EN_LECTURA);
+                                        } else {
+                                            System.out.println(Constantes.NO_DESCUENTO_EN_LECTURA);
+                                        }
+                                        System.out.println(Constantes.KILOS_VENDIDOS);
+                                        Arrays.stream(cantidades).forEach(System.out::println);
+                                        System.out.println(Constantes.CANTIDADES_VENDIDAS);
+                                        gestionMostrador.venderCliente(online, sb, cantidades).forEach(System.out::println);
+                                        System.out.println(Constantes.TOTAL_EUROS);
+                                        double total = gestionMostrador.venderCliente(online, sb, cantidades).stream().reduce(0.0, Double::sum);
+                                        System.out.println(total);
+                                    } else if (gestionMostrador.venderCliente(online, sb, cantidades) == null) {
                                         System.out.println(Constantes.OPERACION_FALLIDA);
                                     }
                                 } else {

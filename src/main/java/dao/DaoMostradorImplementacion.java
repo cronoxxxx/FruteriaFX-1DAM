@@ -45,8 +45,8 @@ public class DaoMostradorImplementacion implements DaoMostrador {
     }
 
     @Override
-    public boolean venderClienteFisico(Cliente clienteComprador, StringBuilder sb, int... cantidadKilos) {
-        return mostrador.venderClienteFisico(clienteComprador,sb,cantidadKilos);
+    public List<Double> venderCliente(Cliente clienteComprador, StringBuilder sb, int... cantidadKilos) {
+        return mostrador.venderCliente(clienteComprador,sb,cantidadKilos);
     }
 
 
@@ -55,10 +55,7 @@ public class DaoMostradorImplementacion implements DaoMostrador {
         return mostrador.getBeneficios();
     }
 
-    @Override
-    public boolean venderClienteOnline(Cliente clienteCompradorOnline, StringBuilder sb, int... cantidadKilos) {
-        return mostrador.venderClienteOnline(clienteCompradorOnline,sb,cantidadKilos);
-    }
+
 
     //JUnit5
     @Override
