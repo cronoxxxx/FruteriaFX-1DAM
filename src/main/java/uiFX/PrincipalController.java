@@ -13,6 +13,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import lombok.extern.log4j.Log4j2;
+import org.kordamp.bootstrapfx.BootstrapFX;
 
 
 import java.net.URL;
@@ -42,13 +43,18 @@ public class PrincipalController implements Initializable {
         Pane view;
         switch (((MenuItem) actionEvent.getSource()).getId()) {
             case "pantallaPrimera" -> {
+
                 view = new FxmlLoader().getView("Screen1.fxml");
+
+
                 borderPane.setCenter(view);
                 menuPrincipal.setVisible(false);
+
                 //view.setUserData(true);
             }
             case "pantallaSegunda" -> {
                 view = new FxmlLoader().getView("Screen2.fxml");
+                view.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
                 borderPane.setCenter(view);
                 menuPrincipal.setVisible(true);
             }

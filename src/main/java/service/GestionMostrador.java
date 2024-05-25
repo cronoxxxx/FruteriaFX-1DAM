@@ -43,7 +43,7 @@ public class GestionMostrador implements IGestionMostrador {
     }
 
     @Override
-    public List<Double> venderCliente(Cliente clienteComprador, StringBuilder sb, int... cantidadKilos) {
+    public boolean venderCliente(Cliente clienteComprador, StringBuilder sb, int... cantidadKilos) {
         return daoMostradorImplementacion.venderCliente(clienteComprador, sb, cantidadKilos);
     }
 
@@ -55,12 +55,12 @@ public class GestionMostrador implements IGestionMostrador {
 
 
     @Override
-    public boolean buscarClienteporID(int id) {
+    public Cliente buscarClienteporID(int id) {
         return daoMostradorImplementacion.buscarClienteporID(id);
     }
 
     @Override
-    public boolean buscarClienteNombreApellido(String nombre, String apellidos) {
+    public List<Cliente> buscarClienteNombreApellido(String nombre, String apellidos) {
         return daoMostradorImplementacion.buscarClienteNombreApellido(nombre, apellidos);
     }
 
@@ -100,7 +100,7 @@ public class GestionMostrador implements IGestionMostrador {
     }
 
     @Override
-    public boolean reunirClientesPorCiudad(String ciudad) {
+    public List<ClienteOnline> reunirClientesPorCiudad(String ciudad) {
         return daoMostradorImplementacion.reunirClientesPorCiudad(ciudad);
     }
 

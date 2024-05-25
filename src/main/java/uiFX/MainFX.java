@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.kordamp.bootstrapfx.BootstrapFX;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -24,6 +25,8 @@ public class MainFX extends Application {
         FXMLLoader loaderMenu = new FXMLLoader(getClass().getResource("/fxml/Screen1.fxml"),rb);
         BorderPane root = loaderMenu.load();
         Scene scene = new Scene(root);
+
+
         Image image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/icon.png")));
         primaryStage.getIcons().add(image);
         primaryStage.setTitle(rb.getString("title"));

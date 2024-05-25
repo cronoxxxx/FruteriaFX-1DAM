@@ -165,7 +165,6 @@ public class Fruteria implements Serializable {
                 double nuevoPrecioVenta = fruta.getPrecioVentaPorKilo() + cantidad;
                 if (nuevoPrecioVenta >= fruta.getPrecioCostePorKilo() && nuevoPrecioVenta < 1000000) {
                     fruta.setPrecioVentaPorKilo(nuevoPrecioVenta);
-                    System.out.println(fruta);
                     return true;
                 }
             }
@@ -184,7 +183,6 @@ public class Fruteria implements Serializable {
             double nuevoPrecioVenta = auxLista.getPrecioVentaPorKilo() + cantidad;
             if (nuevoPrecioVenta >= auxLista.getPrecioCostePorKilo() && nuevoPrecioVenta < 1000000) {
                 auxLista.setPrecioVentaPorKilo(nuevoPrecioVenta);
-                System.out.println(auxLista);
             } else {
                 return false;
             }

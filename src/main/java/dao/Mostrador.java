@@ -25,6 +25,7 @@ public class Mostrador implements Serializable {
     private final Database database;
     private int fila;
     private final Set<Factura> facturas; //No colocará doble factura
+
     public Mostrador() {
         database = DaoFicherosFruta.leerFicheroBinarioData();
         fruteria = new Fruteria();
@@ -33,6 +34,7 @@ public class Mostrador implements Serializable {
         this.beneficios = database.getBeneficios();
         this.fila = database.getFila();
     }
+
     public boolean isEmptyClientes() {
         return clientesEsperaCompra.isEmpty();
     }
@@ -46,7 +48,6 @@ public class Mostrador implements Serializable {
         database.setFila(this.fila);
         //DaoFicherosFruta.escribirFicheroBinarioData(database);
     }
-
 
 
     public boolean putCliente(Cliente valor) {
@@ -91,17 +92,14 @@ public class Mostrador implements Serializable {
         Optional<Cliente> clienteEncontrado = clientesEnEspera.stream().filter(c -> c instanceof ClienteFisico).filter(c -> ((ClienteFisico) c).getOrdenFila() == fila).findFirst();
         if (clienteEncontrado.isPresent()) {
             clienteComprador = (ClienteFisico) clienteEncontrado.get();
-            System.out.println(Constantes.NOMBRE_DEL_CLIENTE + clienteComprador.getNombre());
 
-        } else {
-            System.out.println(Constantes.CLIENTE_NO_ENCONTRADO);
         }
-        fila+=1;
+        fila += 1;
         saveFila();
         return clienteComprador;
     }
 
-    public List<Double> venderCliente(Cliente clienteComprador, StringBuilder sb, int[] cantidadKilos) {
+    public boolean venderCliente(Cliente clienteComprador, StringBuilder sb, int[] cantidadKilos) {
         List<Fruta> agregarCompraFrutasFactura = new ArrayList<>();
         String nombreFruta;
         double sumadorVenta = 0;
@@ -118,13 +116,15 @@ public class Mostrador implements Serializable {
             for (int i = 0; i < fruteria.getFrutas().size(); i++) {
                 Fruta fruta = fruteria.getFrutas().get(i);
                 if (fruta.getNombre().strip().equalsIgnoreCase(nombreFruta.strip())) {
+
                     // Se encontró la fruta, realizar la venta
                     frutaEncontrada = true;
                     if (fruta.getNumeroKilos() < cantidadKilos[j]) {
-                        return null;
+                        return false;
                     } else {
                         double precioUnitario = fruta.getPrecioVentaPorKilo();
                         double precioVentaFruta = precioUnitario * cantidadKilos[j];
+
                         if (clienteComprador.isHasDescuento()) {
                             descuento = precioVentaFruta * 0.7; // Aplicar descuento del 30%
                             almacenPrecios.add(precioVentaFruta * 0.7);
@@ -141,9 +141,11 @@ public class Mostrador implements Serializable {
                     }
                     j++;
                 }
+
             }
+
             if (!frutaEncontrada) {
-                return null;
+                return false;
             }
         }
         Factura factura = new Factura( clienteComprador.getNombre(), clienteComprador.getApellidos(), agregarCompraFrutasFactura, sumadorVenta, almacenPrecios);
@@ -155,8 +157,10 @@ public class Mostrador implements Serializable {
                 .map(Map.Entry::getKey)
                 .findFirst()
                 .ifPresent(clientesEsperaCompra::remove);
-        return almacenPrecios;
+        return true;
     }
+
+
 
     public Cliente devolverClienteOnline(int id) {
         ClienteOnline clienteCompradorOnline;
@@ -166,62 +170,44 @@ public class Mostrador implements Serializable {
             if (cliente instanceof ClienteOnline) {
                 clienteCompradorOnline = (ClienteOnline) cliente;
                 return clienteCompradorOnline;
-            } else {
-                System.err.println(Constantes.NO_EXISTE_CLIENTE_ONLINE_CON_ESA_ID_O_ESA_ID_NO_EXISTE);
-
             }
-        } else {
-            System.err.println(Constantes.CLIENTE_NO_ENCONTRADO);
-
         }
         return null;
     }
 
 
+    public Cliente buscarClienteporID(int id) {
+        return clientesEsperaCompra.get(id);
 
-
-    public boolean buscarClienteporID(int id) {
-        Cliente cliente = clientesEsperaCompra.get(id);
-        if (cliente != null) {
-            System.out.println(Constantes.CLIENTE_ENCONTRADO_EXITO);
-            System.out.println(cliente);
-            return true;
-        } else {
-            System.out.println(Constantes.CLIENTE_NO_ENCONTRADO);
-        }
-        return false;
     }
 
-    public boolean buscarClienteNombreApellido(String nombre, String apellidos) {
+    public List<Cliente> buscarClienteNombreApellido(String nombre, String apellidos) {
         List<Cliente> clienteFisico = clientesEsperaCompra.values().stream()
                 .filter(cliente -> cliente.getNombre().equalsIgnoreCase(nombre) && cliente.getApellidos().equalsIgnoreCase(apellidos)).toList();
         if (!clienteFisico.isEmpty()) {
-            System.out.println(Constantes.CLIENTES_ENCONTRADOS);
-            clienteFisico.forEach(System.out::println);
-            return true;
+            return clienteFisico;
         } else {
-            System.out.println(Constantes.CLIENTES_NO_ENCONTRADOS);
-            return false;
+            return null;
         }
     }
 
-    public boolean reunirClientesPorCiudad(String ciudad) {
+    public List<ClienteOnline> reunirClientesPorCiudad(String ciudad) {
         if (ciudad == null) {
-            System.out.println(Constantes.CIUDAD_VALOR_NULO);
+            return null;
         }
         Map<String, List<ClienteOnline>> clientesPorCiudad = clientesEsperaCompra.values().stream().filter(cliente -> cliente instanceof ClienteOnline)
                 .map(cliente -> (ClienteOnline) cliente).collect(Collectors.groupingBy(ClienteOnline::getCiudad));
-
         if (!clientesPorCiudad.isEmpty() && clientesPorCiudad.containsKey(ciudad)) {
-            System.out.println(Constantes.CLIENTES_DE_LA_CIUDAD + ciudad);
-            System.out.println(Constantes.SEPARADOR);
-            clientesPorCiudad.get(ciudad).forEach(System.out::println);
-            return true;
+            List<ClienteOnline> clientesCiudad = clientesPorCiudad.get(ciudad);
+            if (!clientesCiudad.isEmpty()) {
+                return clientesCiudad;
+            }
         } else {
-            System.out.println(Constantes.NO_SE_HAN_ENCONTRADO_CLIENTES_EN_LA_CIUDAD + ciudad);
+            return null;
         }
-        return false;
+        return null;
     }
+
 
     public boolean removeClienteporID(int id) {
         Cliente cliente = clientesEsperaCompra.get(id);
@@ -258,11 +244,9 @@ public class Mostrador implements Serializable {
             if (!clienteAplicarDescuento.isHasDescuento()) {
                 clienteAplicarDescuento.setHasDescuento(true);
             } else {
-                System.err.println(Constantes.ESTE_CLIENTE_YA_CUENTA_CON_UN_DESCUENTO + clienteAplicarDescuento.getNombre() + clienteAplicarDescuento.getApellidos());
                 return false;
             }
         } else {
-            System.err.println(Constantes.EL_ID_NO_EXISTE);
             return false;
         }
         return true;
@@ -275,12 +259,7 @@ public class Mostrador implements Serializable {
             if (!clienteADescontar.isHasDescuento()) {
                 clienteADescontar.setHasDescuento(true); // Aplicar descuento al cliente seleccionado
                 aplicado = true;
-            } else {
-                System.err.println(Constantes.ESTE_CLIENTE_YA_CUENTA_CON_UN_DESCUENTO + clienteADescontar.getNombre() + clienteADescontar.getApellidos());
             }
-            System.out.println(Constantes.DESCUENTO_APLICADO_AL_CLIENTE + clienteADescontar.getNombre() + " " + clienteADescontar.getApellidos());
-        } else {
-            System.out.println(Constantes.OPCION_NO_VALIDA);
         }
         return aplicado;
     }
@@ -304,10 +283,10 @@ public class Mostrador implements Serializable {
     }
 
 
-
-    public Set<Factura> devolverFacturasNombreSet(String nombre, String apellidos){ //usar para actualizar factura
+    public Set<Factura> devolverFacturasNombreSet(String nombre, String apellidos) { //usar para actualizar factura
         return facturas.stream().filter(factura -> factura.getCliente().strip().equalsIgnoreCase(nombre) && factura.getApellido().strip().equalsIgnoreCase(apellidos)).collect(Collectors.toSet());
     }
+
     public boolean actualizarFactura(Factura factura, String nombre, String apellidos) {
         if (factura != null && nombre != null && apellidos != null) {
             factura.setCliente(nombre);
@@ -316,7 +295,6 @@ public class Mostrador implements Serializable {
         }
         return false;
     }
-
 
 
     public Set<Factura> getFacturas() {

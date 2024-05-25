@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
-<?import io.github.palexdev.materialfx.controls.MFXDatePicker?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import io.github.palexdev.materialfx.controls.MFXToggleButton?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -14,9 +14,9 @@
 
 <AnchorPane fx:id="anchorPane" prefHeight="556.0" prefWidth="878.0" style="-fx-background-color: #e6e1ec;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uiFX.SegundaPantallaClientesController">
    <children>
-      <MFXButton fx:id="botonDelete" layoutX="763.0" layoutY="480.0" mnemonicParsing="false" onAction="#deleteFruta" prefHeight="42.0" prefWidth="82.0" text="Eliminar" />
+      <MFXButton fx:id="botonDelete" layoutX="772.0" layoutY="480.0" mnemonicParsing="false" onAction="#deleteFruta" prefHeight="42.0" prefWidth="92.0" text="Eliminar" />
       <MFXButton fx:id="botonAdd" layoutX="556.0" layoutY="480.0" mnemonicParsing="false" onAction="#addFruta" prefHeight="42.0" prefWidth="81.0" text="Añadir" />
-      <MFXButton fx:id="botonUpdate" layoutX="660.0" layoutY="480.0" mnemonicParsing="false" onAction="#updateFruta" prefHeight="42.0" prefWidth="82.0" text="Actualizar" />
+      <MFXButton fx:id="botonUpdate" layoutX="660.0" layoutY="480.0" mnemonicParsing="false" onAction="#updateFruta" prefHeight="42.0" prefWidth="92.0" text="Actualizar" />
       <MFXTextField fx:id="nombre" alignment="CENTER" floatMode="BORDER" layoutX="552.0" layoutY="135.0" prefHeight="78.0" prefWidth="317.0" promptText="Nombre" />
       <MFXTextField fx:id="procedencia" alignment="CENTER" floatMode="BORDER" layoutX="556.0" layoutY="232.0" prefHeight="50.0" prefWidth="126.0" promptText="Procedencia" />
       <TableView fx:id="tablaFrutas" layoutX="7.0" layoutY="104.0" prefHeight="442.0" prefWidth="526.0">
@@ -46,11 +46,11 @@
       <MFXTextField fx:id="numeroVentas" alignment="CENTER" floatMode="BORDER" layoutX="556.0" layoutY="391.0" prefHeight="50.0" prefWidth="126.0" promptText="Número de Ventas" />
       <MFXTextField fx:id="numeroKilos" alignment="CENTER" floatMode="BORDER" layoutX="556.0" layoutY="312.0" prefHeight="50.0" prefWidth="126.0" promptText="Número de Kilos" />
       <MFXTextField fx:id="precioCoste" alignment="CENTER" floatMode="BORDER" layoutX="720.0" layoutY="312.0" prefHeight="50.0" prefWidth="150.0" promptText="Precio de Coste" />
-      <MFXDatePicker fx:id="caducidad" layoutX="716.0" layoutY="391.0" prefHeight="50.0" prefWidth="150.0" />
       <ImageView fitHeight="101.0" fitWidth="126.0" layoutX="638.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/pera.jpg" />
          </image>
       </ImageView>
+      <DatePicker fx:id="caducidad" layoutX="720.0" layoutY="395.0" prefHeight="42.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

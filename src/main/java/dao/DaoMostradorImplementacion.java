@@ -1,6 +1,7 @@
 package dao;
 
 import domain.Cliente;
+import domain.ClienteOnline;
 import domain.Factura;
 import lombok.Getter;
 import lombok.Setter;
@@ -45,7 +46,7 @@ public class DaoMostradorImplementacion implements DaoMostrador {
     }
 
     @Override
-    public List<Double> venderCliente(Cliente clienteComprador, StringBuilder sb, int... cantidadKilos) {
+    public boolean venderCliente(Cliente clienteComprador, StringBuilder sb, int... cantidadKilos) {
         return mostrador.venderCliente(clienteComprador,sb,cantidadKilos);
     }
 
@@ -59,12 +60,12 @@ public class DaoMostradorImplementacion implements DaoMostrador {
 
     //JUnit5
     @Override
-    public boolean buscarClienteporID(int id) {
+    public Cliente buscarClienteporID(int id) {
         return mostrador.buscarClienteporID(id);
     }
     //JUnit5
     @Override
-    public boolean buscarClienteNombreApellido(String nombre, String apellidos) {
+    public List<Cliente> buscarClienteNombreApellido(String nombre, String apellidos) {
         return mostrador.buscarClienteNombreApellido(nombre,apellidos);
     }
     //JUnit5
@@ -104,7 +105,7 @@ public class DaoMostradorImplementacion implements DaoMostrador {
     }
 
     @Override
-    public boolean reunirClientesPorCiudad(String ciudad) {
+    public List<ClienteOnline> reunirClientesPorCiudad(String ciudad) {
         return mostrador.reunirClientesPorCiudad(ciudad);
     }
 

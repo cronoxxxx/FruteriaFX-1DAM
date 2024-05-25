@@ -152,8 +152,9 @@ public class InterfazMostrador {
         try {
             System.out.println(Constantes.INGRESE_CIUDAD);
             String ciudad = entradaReader.readLine();
-            if (gestionMostrador.reunirClientesPorCiudad(ciudad)) {
+            if (gestionMostrador.reunirClientesPorCiudad(ciudad)!= null && !gestionMostrador.reunirClientesPorCiudad(ciudad).isEmpty()) {
                 System.out.println(Constantes.CLIENTES_REUNIDOS_CON_EXITO);
+                gestionMostrador.reunirClientesPorCiudad(ciudad).forEach(System.out::println);
             } else {
                 System.out.println(Constantes.CLIENTES_NO_REUNIDOS);
             }
@@ -172,12 +173,17 @@ public class InterfazMostrador {
             switch (op) {
                 case 1 -> {
                     System.out.println(Constantes.INGRESE_ID_DEL_CLIENTE);
-                    int id = Integer.parseInt(entradaReader.readLine());
-                    if (gestionMostrador.aplicarDescuentosClienteporID(id)) {
-                        System.out.println(Constantes.DESCUENTO_APLICADO_CON_EXITO);
+                    int id = Integer.parseInt(entradaReader.readLine()) - 1;
+                    if (id > 0 && id <= gestionMostrador.getDaoMostradorImplementacion().getMostrador().getClientesEsperaCompra().values().size()) {
+                        if (gestionMostrador.aplicarDescuentosClienteporID(id)) {
+                            System.out.println(Constantes.DESCUENTO_APLICADO_CON_EXITO);
+                        } else {
+                            System.err.println(Constantes.ESTE_CLIENTE_YA_CUENTA_CON_UN_DESCUENTO);
+                        }
                     } else {
-                        System.out.println(Constantes.DESCUENTO_NO_APLICADO);
+                        System.err.println(Constantes.EL_ID_NO_EXISTE);
                     }
+
                 }
                 case 2 -> {
                     System.out.println(Constantes.INGRESE_NOMBRE_DEL_CLIENTE);
@@ -196,7 +202,7 @@ public class InterfazMostrador {
                             if (gestionMostrador.aplicarDescuentosporClienteNombreApellidos(actual)) {
                                 System.out.println(Constantes.DESCUENTO_APLICADO_CON_EXITO);
                             } else {
-                                System.out.println(Constantes.DESCUENTO_NO_APLICADO);
+                                System.err.println(Constantes.ESTE_CLIENTE_YA_CUENTA_CON_UN_DESCUENTO);
                             }
                         } else {
                             System.out.println(Constantes.EL_ID_NO_EXISTE);
@@ -278,14 +284,26 @@ public class InterfazMostrador {
                     System.out.println(Constantes.INGRESE_ID_DEL_CLIENTE);
 
                     int id = Integer.parseInt(entradaReader.readLine());
-                    gestionMostrador.buscarClienteporID(id);
+                    if (gestionMostrador.buscarClienteporID(id)!=null) {
+                        System.out.println(Constantes.CLIENTE_ENCONTRADO_EXITO);
+                        System.out.println(gestionMostrador.buscarClienteporID(id));
+
+
+                    } else if (gestionMostrador.buscarClienteporID(id)==null) {
+                        System.out.println(Constantes.EL_ID_NO_EXISTE);
+                    }
                 }
                 case 2 -> {
                     System.out.println(Constantes.INGRESE_NOMBRE_DEL_CLIENTE);
                     String nombre = entradaReader.readLine();
                     System.out.println(Constantes.INGRESE_APELLIDOS_DEL_CLIENTE);
                     String apellidos = entradaReader.readLine();
-                    gestionMostrador.buscarClienteNombreApellido(nombre, apellidos);
+                    if (gestionMostrador.buscarClienteNombreApellido(nombre, apellidos) != null) {
+                        System.out.println(Constantes.CLIENTE_ENCONTRADO_EXITO);
+                        System.out.println(gestionMostrador.buscarClienteNombreApellido(nombre, apellidos));
+                    } else if (gestionMostrador.buscarClienteNombreApellido(nombre, apellidos) == null) {
+                        System.out.println(Constantes.CLIENTES_NO_REUNIDOS);
+                    }
 
                 }
                 default -> System.out.println(Constantes.OPCION_NO_VALIDA);
@@ -307,6 +325,7 @@ public class InterfazMostrador {
                 case 1 -> {
                     Cliente fisico = gestionMostrador.devolverClienteFisico();
                     if (fisico != null) {
+                        System.out.println(Constantes.NOMBRE_DEL_CLIENTE + fisico.getNombre());
                         System.out.println(Constantes.INGRESE_CUANTAS_FRUTAS_DESEA_VENDER);
                         int cant = Integer.parseInt(entradaReader.readLine());
                         int[] cantidades = new int[cant];
@@ -317,7 +336,7 @@ public class InterfazMostrador {
                             cantidades[i] = Integer.parseInt(entradaReader.readLine());
                         }
                         //sb.delete(sb.length() - 2, sb.length());
-                        if (gestionMostrador.venderCliente(fisico, sb, cantidades)!=null) {
+                        if (gestionMostrador.venderCliente(fisico, sb, cantidades)) {
                             if (fisico.isHasDescuento()) {
                                 System.out.println(Constantes.DESCUENTO_EN_LECTURA);
                             } else {
@@ -325,12 +344,9 @@ public class InterfazMostrador {
                             }
                             System.out.println(Constantes.KILOS_VENDIDOS);
                             Arrays.stream(cantidades).forEach(System.out::println);
-                            System.out.println(Constantes.CANTIDADES_VENDIDAS);
-                            gestionMostrador.venderCliente(fisico, sb, cantidades).forEach(System.out::println);
-                            System.out.println(Constantes.TOTAL_EUROS);
-                            double total = gestionMostrador.venderCliente(fisico, sb, cantidades).stream().reduce(0.0, Double::sum);
-                            System.out.println(total);
-                        } else if (gestionMostrador.venderCliente(fisico, sb, cantidades) == null) {
+
+
+                        } else  {
                             System.out.println(Constantes.OPERACION_FALLIDA);
                         }
                     } else {
@@ -355,7 +371,7 @@ public class InterfazMostrador {
                                     System.out.println(Constantes.INGRESE_LA_CANTIDAD);
                                     cantidades[i] = Integer.parseInt(entradaReader.readLine());
                                 }
-                                if (gestionMostrador.venderCliente(online, sb, cantidades)!=null ) {
+                                if (gestionMostrador.venderCliente(online, sb, cantidades) ) {
                                     if (online.isHasDescuento()) {
                                         System.out.println(Constantes.DESCUENTO_EN_LECTURA);
                                     } else {
@@ -363,12 +379,8 @@ public class InterfazMostrador {
                                     }
                                     System.out.println(Constantes.KILOS_VENDIDOS);
                                     Arrays.stream(cantidades).forEach(System.out::println);
-                                    System.out.println(Constantes.CANTIDADES_VENDIDAS);
-                                    gestionMostrador.venderCliente(online, sb, cantidades).forEach(System.out::println);
-                                    System.out.println(Constantes.TOTAL_EUROS);
-                                    double total = gestionMostrador.venderCliente(online, sb, cantidades).stream().reduce(0.0, Double::sum);
-                                    System.out.println(total);
-                                } else if (gestionMostrador.venderCliente(online, sb, cantidades) == null) {
+
+                                } else  {
                                     System.out.println(Constantes.OPERACION_FALLIDA);
                                 }
                             } else  {
@@ -398,7 +410,7 @@ public class InterfazMostrador {
                                         System.out.println(Constantes.INGRESE_LA_CANTIDAD);
                                         cantidades[i] = Integer.parseInt(entradaReader.readLine());
                                     }
-                                    if (gestionMostrador.venderCliente(online, sb, cantidades)!=null) {
+                                    if (gestionMostrador.venderCliente(online, sb, cantidades)) {
                                         if (online.isHasDescuento()) {
                                             System.out.println(Constantes.DESCUENTO_EN_LECTURA);
                                         } else {
@@ -406,12 +418,8 @@ public class InterfazMostrador {
                                         }
                                         System.out.println(Constantes.KILOS_VENDIDOS);
                                         Arrays.stream(cantidades).forEach(System.out::println);
-                                        System.out.println(Constantes.CANTIDADES_VENDIDAS);
-                                        gestionMostrador.venderCliente(online, sb, cantidades).forEach(System.out::println);
-                                        System.out.println(Constantes.TOTAL_EUROS);
-                                        double total = gestionMostrador.venderCliente(online, sb, cantidades).stream().reduce(0.0, Double::sum);
-                                        System.out.println(total);
-                                    } else if (gestionMostrador.venderCliente(online, sb, cantidades) == null) {
+
+                                    } else {
                                         System.out.println(Constantes.OPERACION_FALLIDA);
                                     }
                                 } else {
@@ -510,7 +518,7 @@ public class InterfazMostrador {
         int op = menu();
         switch (op) {
             case 1 -> {
-                System.out.println(Constantes.SELECCIONE_ORDEN_DE_MUESTRA);
+                System.out.println(Constantes.SELECCIONE_ORDEN_DE_MUESTRA2);
                 op = menu();
                 switch (op) {
                     case 1 -> System.out.println(gestionMostrador.mostrarInformacion(true));
@@ -519,7 +527,7 @@ public class InterfazMostrador {
                 }
             }
             case 2 -> {
-                System.out.println(Constantes.SELECCIONE_ORDEN_DE_MUESTRA);
+                System.out.println(Constantes.SELECCIONE_ORDEN_DE_MUESTRA2);
                 op = menu();
                 switch (op) {
                     case 1 -> System.out.println(gestionMostrador.mostrarInformacionporNombre(true));

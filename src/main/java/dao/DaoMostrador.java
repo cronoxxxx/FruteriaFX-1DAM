@@ -4,6 +4,7 @@ package dao;
 
 
 import domain.Cliente;
+import domain.ClienteOnline;
 import domain.Factura;
 
 import java.util.List;
@@ -18,12 +19,12 @@ public interface DaoMostrador {
     Map<Integer, Cliente> mostrarInformacionporNombre(boolean ascendente);
 
 
-    List<Double> venderCliente(Cliente clienteComprador, StringBuilder sb, int ...cantidadKilos);
+    boolean venderCliente(Cliente clienteComprador, StringBuilder sb, int ...cantidadKilos);
 
     double getBeneficios();
 
-    boolean buscarClienteporID(int id);
-    boolean buscarClienteNombreApellido(String nombre, String apellidos);
+    Cliente buscarClienteporID(int id);
+    List<Cliente> buscarClienteNombreApellido(String nombre, String apellidos);
     boolean removeClienteporID(int id);
     boolean removeClienteporNombreApellidos(Cliente cliente);
     boolean aplicarDescuentosClienteporID(int id);
@@ -31,7 +32,7 @@ public interface DaoMostrador {
     Cliente devolverClienteOnline (int id);
     Cliente devolverClienteFisico ();
     List<Cliente> clienteAccion (String nombre, String apellidos);
-    boolean reunirClientesPorCiudad(String ciudad);
+    List<ClienteOnline> reunirClientesPorCiudad(String ciudad);
     void eliminarTodo();
     Set<Factura> buscarFacturasPorFecha(String date);
 

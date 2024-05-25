@@ -9,6 +9,7 @@ module javafx {
     requires org.apache.logging.log4j;
     requires datafaker;
     requires java.logging;
+    requires org.kordamp.bootstrapfx.core;
 
     exports uiFX;
 
